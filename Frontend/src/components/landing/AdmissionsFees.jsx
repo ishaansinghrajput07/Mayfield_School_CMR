@@ -181,7 +181,6 @@ export default function AdmissionsFees() {
 
             <button
               onClick={() => {
-                // Scopes window.print() to just the fee card via a
                 // temporary body class (see index.css) - without this,
                 // "Download PDF" would print the entire homepage: navbar,
                 // hero, gallery, footer, all of it.
