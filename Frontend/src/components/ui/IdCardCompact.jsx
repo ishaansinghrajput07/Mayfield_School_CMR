@@ -13,7 +13,7 @@ export default function IdCardCompact({ student, schoolName = "St. Thomas Conven
   return (
     <div className="mx-auto w-full max-w-[380px] overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-card print:shadow-none">
       {/* Masthead */}
-      <div className="flex items-center gap-2 bg-gradient-to-r from-navy-700 to-teal-600 px-4 py-3 text-white">
+      <div className="flex items-center gap-2 bg-gradient-to-r from-navy-800 to-navy-600 px-4 py-3 text-white">
         <GraduationCap size={20} />
         <div className="min-w-0">
           <p className="truncate font-display text-xs font-bold leading-tight">{schoolName}</p>

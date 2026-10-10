@@ -21,7 +21,7 @@ export default function Avatar({ src, name, size = "sm", className = "" }) {
 
   return (
     <div
-      className={`${sizeClasses} flex shrink-0 items-center justify-center rounded-full bg-teal-500 font-semibold text-white ${className}`}
+      className={`${sizeClasses} flex shrink-0 items-center justify-center rounded-full bg-navy-500 font-semibold text-white ${className}`}
     >
       {initials(name)}
     </div>

@@ -66,14 +66,14 @@ export default function Testimonials() {
   const avgRating = quotes?.length ? quotes.reduce((sum, q) => sum + q.rating, 0) / quotes.length : null;
 
   return (
-    <section id="reviews" className="relative overflow-hidden bg-gradient-to-b from-paper via-[#FFFCF6] to-paper px-6 py-24">
+    <section id="reviews" className="relative overflow-hidden bg-gradient-to-b from-paper via-white to-paper px-6 py-24">
       <ParallaxDecor tone="teal" />
 
       <div className="pointer-events-none absolute left-1/4 top-10 h-72 w-72 rounded-full bg-amber-300/20 blur-[110px]" aria-hidden />
-      <div className="pointer-events-none absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-teal-300/15 blur-[100px]" aria-hidden />
+      <div className="pointer-events-none absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-navy-300/15 blur-[100px]" aria-hidden />
 
       <GraduationCap size={420} strokeWidth={0.6} className="pointer-events-none absolute -right-24 -top-24 text-navy-900/[0.035]" aria-hidden />
-      <BookOpen size={260} strokeWidth={0.6} className="pointer-events-none absolute -bottom-16 -left-16 rotate-[-8deg] text-teal-900/[0.035]" aria-hidden />
+      <BookOpen size={260} strokeWidth={0.6} className="pointer-events-none absolute -bottom-16 -left-16 rotate-[-8deg] text-navy-900/[0.035]" aria-hidden />
       <Feather size={120} strokeWidth={0.6} className="pointer-events-none absolute right-[8%] top-[55%] rotate-12 text-amber-700/[0.04]" aria-hidden />
 
       {[
@@ -92,7 +92,7 @@ export default function Testimonials() {
 
       <div className="relative mx-auto max-w-[1400px]">
         <div ref={headRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">From Our School Family</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">From Our School Family</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">What Parents Say</h2>
           <p className="mt-2 text-sm text-navy-500">Real stories from parents who are part of our journey.</p>
 
@@ -103,7 +103,7 @@ export default function Testimonials() {
               </span>
               <span className="h-3 w-px bg-navy-200" aria-hidden />
               <span className="inline-flex items-center gap-1.5">
-                <Users size={14} className="text-teal-600" /> {quotes.length} Review{quotes.length === 1 ? "" : "s"}
+                <Users size={14} className="text-navy-600" /> {quotes.length} Review{quotes.length === 1 ? "" : "s"}
               </span>
             </div>
           )}
@@ -338,7 +338,7 @@ function FeedbackForm() {
             transition={{ type: "spring", stiffness: 220, damping: 16 }}
             className="flex flex-col items-center py-4"
           >
-            <motion.div initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.1, type: "spring", stiffness: 260 }} className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+            <motion.div initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.1, type: "spring", stiffness: 260 }} className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-navy-50 text-navy-600">
               <CheckCircle2 size={26} />
             </motion.div>
             <p className="font-serif text-lg font-semibold text-navy-900">Thank you!</p>

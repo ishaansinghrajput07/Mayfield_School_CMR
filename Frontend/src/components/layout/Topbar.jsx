@@ -45,22 +45,22 @@ export default function Topbar({ title, onMenuClick }) {
   };
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-navy-100 bg-white/90 px-4 backdrop-blur-sm sm:px-6 print:hidden">
+    <header className="sticky top-0 z-30 flex min-h-16 items-center justify-between gap-3 border-b border-navy-100/80 border-t-2 border-t-school-blue bg-white/95 px-4 py-2.5 backdrop-blur-md sm:gap-4 sm:px-6 print:hidden">
       <div className="flex min-w-0 items-center gap-3">
         <button
           onClick={onMenuClick}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-navy-400 hover:bg-navy-50 lg:hidden"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-navy-500 transition-colors hover:bg-navy-50 hover:text-navy-900 lg:hidden"
           aria-label="Open menu"
         >
           <Menu size={20} />
         </button>
         <div className="min-w-0">
-          <div className="hidden items-center gap-1 text-xs text-navy-300 sm:flex">
+          <div className="hidden items-center gap-1 text-[11px] font-medium text-navy-300 sm:flex">
             <span className="capitalize">{user?.role}</span>
             <ChevronRight size={12} />
             <span className="text-navy-500">{title}</span>
           </div>
-          <h2 className="truncate font-display text-lg font-semibold text-navy-900">{title}</h2>
+          <h2 className="truncate font-display text-[15px] font-semibold text-navy-900 sm:text-base">{title}</h2>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default function Topbar({ title, onMenuClick }) {
           onFocus={() => setSearchOpen(true)}
           onBlur={() => setTimeout(() => setSearchOpen(false), 120)}
           placeholder="Search sections..."
-          className="w-full rounded-lg border border-navy-100 bg-navy-50/60 py-2 pl-9 pr-3 text-sm text-navy-700 placeholder:text-navy-300 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500"
+          className="w-full rounded-lg border border-navy-100 bg-surface py-2 pl-9 pr-3 text-sm text-navy-700 placeholder:text-navy-300 transition-colors focus:border-navy-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-navy-500/15"
         />
         {searchOpen && results.length > 0 && (
           <div className="absolute left-0 right-0 top-11 overflow-hidden rounded-lg border border-navy-100 bg-white shadow-card">
@@ -94,7 +94,7 @@ export default function Topbar({ title, onMenuClick }) {
         <div className="relative">
           <button
             onClick={() => { setBellOpen((v) => !v); setMenuOpen(false); }}
-            className="relative flex h-9 w-9 items-center justify-center rounded-lg text-navy-400 hover:bg-navy-50"
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg text-navy-500 transition-colors hover:bg-navy-50 hover:text-navy-900"
             aria-label="Notifications"
           >
             <Bell size={18} />
@@ -106,11 +106,11 @@ export default function Topbar({ title, onMenuClick }) {
           </button>
 
           {bellOpen && (
-            <div className="absolute right-0 top-11 w-80 rounded-lg border border-navy-100 bg-white shadow-card">
+            <div className="absolute right-0 top-11 z-50 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-navy-100 bg-white shadow-lg">
               <div className="flex items-center justify-between border-b border-navy-100 px-4 py-2.5">
                 <p className="text-sm font-semibold text-navy-900">Notifications</p>
                 {unreadCount > 0 && (
-                  <button onClick={markAllAsRead} className="flex items-center gap-1 text-xs font-medium text-teal-600 hover:underline">
+                  <button onClick={markAllAsRead} className="flex items-center gap-1 text-xs font-medium text-navy-600 hover:underline">
                     <Check size={12} /> Mark all read
                   </button>
                 )}
@@ -141,7 +141,7 @@ export default function Topbar({ title, onMenuClick }) {
         <div className="relative">
           <button
             onClick={() => { setMenuOpen((v) => !v); setBellOpen(false); }}
-            className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-navy-50"
+            className="flex items-center gap-2 rounded-lg px-2 py-1.5 transition-colors hover:bg-navy-50"
           >
             <Avatar src={user?.avatar} name={user?.name} size="sm" />
             <span className="hidden text-sm font-medium text-navy-700 sm:block">{user?.name}</span>
@@ -149,7 +149,7 @@ export default function Topbar({ title, onMenuClick }) {
           </button>
 
           {menuOpen && (
-            <div className="absolute right-0 top-11 w-44 rounded-lg border border-navy-100 bg-white py-1 shadow-card">
+            <div className="absolute right-0 top-11 z-50 w-48 rounded-xl border border-navy-100 bg-white py-1 shadow-lg">
               <button
                 onClick={() => { setMenuOpen(false); navigate(`/${user?.role}/profile`); }}
                 className="flex w-full items-center gap-2 px-3 py-2 text-sm text-navy-600 hover:bg-navy-50"

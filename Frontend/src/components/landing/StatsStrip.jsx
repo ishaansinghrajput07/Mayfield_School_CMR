@@ -76,7 +76,7 @@ const cardVariants = {
 export default function StatsStrip() {
   return (
     // REDUCED: Changed py-24 lg:py-32 to py-12 lg:py-16
-    <section className="relative overflow-hidden bg-[#081b33] px-6 py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-navy-900 px-6 py-12 lg:py-16">
       
       {/* Background Enhancements */}
       <div 
@@ -91,7 +91,7 @@ export default function StatsStrip() {
         }}
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-[#081b33] to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-navy-900 to-transparent" />
 
       <div className="relative mx-auto max-w-[1400px]">
         

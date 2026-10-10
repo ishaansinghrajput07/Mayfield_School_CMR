@@ -67,24 +67,24 @@ export default function Apply() {
     <div className="font-body">
       <Navbar />
 
-      <section className="relative overflow-hidden bg-paper px-6 pb-24 pt-36">
+      <section className="application-page relative overflow-hidden bg-paper px-6 pb-24 pt-36">
         <GraduationCap size={420} strokeWidth={0.6} className="pointer-events-none absolute -right-24 -top-16 text-navy-900/[0.035]" aria-hidden />
-        <div className="pointer-events-none absolute left-1/4 top-10 h-72 w-72 rounded-full bg-amber-300/15 blur-[110px]" aria-hidden />
+        <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-amber-300/15 blur-[110px]" aria-hidden />
 
-        <div className="relative mx-auto max-w-2xl">
+        <div className="relative mx-auto max-w-5xl">
           <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-medium text-navy-500 hover:text-navy-800">
             <ArrowLeft size={15} /> Back to home
           </Link>
 
           <div className="mt-5 text-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Admissions {new Date().getFullYear()}–{String(new Date().getFullYear() + 1).slice(2)}</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Admissions {new Date().getFullYear()}–{String(new Date().getFullYear() + 1).slice(2)}</span>
             <h1 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Apply for Admission</h1>
             <p className="mt-3 text-navy-500">
               Tell us a little about your child. Our admissions team will review your application and reach out to schedule next steps.
             </p>
           </div>
 
-          <div className="premium-card mt-10 rounded-[28px] border-2 border-navy-900/10 bg-white p-7 sm:p-10">
+          <div className="premium-card mt-8 rounded-2xl border border-navy-900/10 bg-white p-4 shadow-card sm:mt-10 sm:rounded-[28px] sm:p-7 lg:p-9">
             <AnimatePresence mode="wait">
               {submitted ? (
                 <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center py-10 text-center">
@@ -100,13 +100,13 @@ export default function Apply() {
                   </Link>
                 </motion.div>
               ) : (
-                <motion.form key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} onSubmit={handleSubmit} className="space-y-5">
+                <motion.form key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} onSubmit={handleSubmit} className="grid gap-5 md:grid-cols-2 md:gap-6">
                   <FieldGroup title="Child's details" icon={User}>
                     <div>
                       <label className="label">Full name</label>
                       <input required value={form.applicantName} onChange={set("applicantName")} className="input" />
                     </div>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                       <div>
                         <label className="label">Date of birth</label>
                         <input required type="date" value={form.dob} onChange={set("dob")} className="input" />
@@ -143,40 +143,44 @@ export default function Apply() {
                     </div>
                   </FieldGroup>
 
-                  <FieldGroup title="Contact details" icon={MapPin}>
-                    <div>
-                      <label className="label">Parent/guardian name</label>
-                      <input required value={form.parentName} onChange={set("parentName")} className="input" />
-                    </div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      <MobileVerifyField
-                        label="Parent mobile number"
-                        value={form.parentMobile}
-                        onChange={(v) => setForm((f) => ({ ...f, parentMobile: v }))}
-                        purpose="admission_parent_mobile"
-                        verified={!!parentMobileVerifyToken}
-                        onVerified={setParentMobileVerifyToken}
-                        variant="light"
-                      />
+                  <div className="md:col-span-2">
+                    <FieldGroup title="Contact details" icon={MapPin}>
                       <div>
-                        <label className="label">Email (optional)</label>
-                        <input type="email" value={form.parentEmail} onChange={set("parentEmail")} className="input" />
+                        <label className="label">Parent/guardian name</label>
+                        <input required value={form.parentName} onChange={set("parentName")} className="input" />
                       </div>
-                    </div>
-                    <div>
-                      <label className="label">Address</label>
-                      <input required value={form.address} onChange={set("address")} className="input" />
-                    </div>
-                  </FieldGroup>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <MobileVerifyField
+                          label="Parent mobile number"
+                          value={form.parentMobile}
+                          onChange={(v) => setForm((f) => ({ ...f, parentMobile: v }))}
+                          purpose="admission_parent_mobile"
+                          verified={!!parentMobileVerifyToken}
+                          onVerified={setParentMobileVerifyToken}
+                          variant="light"
+                        />
+                        <div>
+                          <label className="label">Email (optional)</label>
+                          <input type="email" value={form.parentEmail} onChange={set("parentEmail")} className="input" />
+                        </div>
+                      </div>
+                      <div>
+                        <label className="label">Address</label>
+                        <input required value={form.address} onChange={set("address")} className="input" />
+                      </div>
+                    </FieldGroup>
+                  </div>
 
-                  <FieldGroup title="Anything else?" icon={MessageSquare}>
-                    <textarea rows={3} value={form.notes} onChange={set("notes")} placeholder="Optional - any questions or details you'd like us to know" className="input" />
-                  </FieldGroup>
+                  <div className="md:col-span-2">
+                    <FieldGroup title="Anything else?" icon={MessageSquare}>
+                      <textarea rows={3} value={form.notes} onChange={set("notes")} placeholder="Optional - any questions or details you'd like us to know" className="input" />
+                    </FieldGroup>
+                  </div>
 
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="btn-glow flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 py-3.5 text-sm font-semibold text-navy-900 transition-colors hover:bg-amber-600 disabled:opacity-60"
+                    className="btn-glow flex w-full items-center justify-center gap-2 rounded-xl bg-school-red py-3.5 text-sm font-semibold text-white transition-colors hover:bg-school-red-dark disabled:opacity-60 md:col-span-2"
                   >
                     {submitting ? (
                       <>
@@ -187,9 +191,9 @@ export default function Apply() {
                     )}
                   </button>
 
-                  <p className="text-center text-xs text-navy-400">
+                  <p className="text-center text-xs text-navy-400 md:col-span-2">
                     Already have an admission number?{" "}
-                    <Link to="/signup" className="font-semibold text-teal-700 hover:underline">
+                    <Link to="/signup" className="font-semibold text-school-blue-dark hover:underline">
                       Create your student account
                     </Link>
                   </p>
@@ -207,12 +211,12 @@ export default function Apply() {
 
 function FieldGroup({ title, icon: Icon, children }) {
   return (
-    <div>
+    <div className="rounded-xl border border-navy-100 bg-surface/60 p-4 sm:p-5">
       <div className="mb-2.5 flex items-center gap-2">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-teal-50 text-teal-700">
+        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-navy-100 text-navy-700">
           <Icon size={13} />
         </span>
-        <p className="text-xs font-bold uppercase tracking-wide text-navy-500">{title}</p>
+        <p className="text-xs font-bold uppercase tracking-wide text-navy-700">{title}</p>
       </div>
       <div className="space-y-3">{children}</div>
     </div>

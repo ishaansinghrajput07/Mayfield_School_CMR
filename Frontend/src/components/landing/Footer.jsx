@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { GraduationCap, Facebook, Instagram, Youtube, Linkedin, MapPin, Phone, Clock, Send, ShieldAlert } from "lucide-react";
 
 const COLUMNS = [
-  { heading: "Quick Links", links: [["Home", "#top"], ["About Us", "#about"], ["Academics", "#academics"], ["Admissions", "#admissions"]] },
-  { heading: "School Life", links: [["Gallery", "#gallery"], ["Facilities", "#facilities"], ["Programs", "#programs"], ["Parents Say", "#reviews"]] },
-  { heading: "Resources", links: [["Syllabus", "#academics"], ["Fee Structure", "#admissions"], ["FAQ", "#faq"], ["Contact", "#contact"]] },
-  { heading: "Parent Access", links: [["Parent Portal Login", "/login"], ["Student Login", "/login"], ["Apply for Admission", "/signup"], ["Notices & Events", "#top"]] },
+  { heading: "Quick Links", links: [["Home", "/"], ["About Us", "/?section=about"], ["Academics", "/?section=academics"], ["Admissions", "/?section=admissions"]] },
+  { heading: "School Life", links: [["Gallery", "/?section=gallery"], ["Facilities", "/?section=facilities"], ["Programs", "/?section=programs"], ["Parents Say", "/?section=reviews"]] },
+  { heading: "Resources", links: [["Syllabus", "/?section=academics"], ["Fee Structure", "/?section=admissions"], ["FAQ", "/?section=faq"], ["Contact", "/?section=contact"]] },
+  { heading: "Parent Access", links: [["Parent Portal Login", "/login"], ["Student Login", "/login"], ["Apply for Admission", "/apply"], ["Notices & Events", "/?section=notices"]] },
 ];
 
 export default function Footer() {
@@ -33,13 +34,13 @@ export default function Footer() {
 
             <div className="mt-6 flex gap-3">
               {[Facebook, Instagram, Youtube, Linkedin].map((Icon, i) => (
-                <a
+                <Link
                   key={i}
-                  href="#top"
+                  to="/"
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-amber-400 hover:text-amber-400"
                 >
                   <Icon size={15} />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -51,9 +52,9 @@ export default function Footer() {
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map(([label, href]) => (
                     <li key={label}>
-                      <a href={href} className="text-sm text-white/65 hover:text-white">
+                      <Link to={href} className="text-sm text-white/65 hover:text-white">
                         {label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

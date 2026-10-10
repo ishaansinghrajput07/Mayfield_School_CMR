@@ -64,7 +64,7 @@ export default function Facilities() {
       <ParallaxDecor tone="navy" />
       <div className="mx-auto max-w-site">
         <div ref={headRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">What We Offer</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">What We Offer</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
             Facilities & Infrastructure
           </h2>
@@ -72,7 +72,7 @@ export default function Facilities() {
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="facility-card-grid grid gap-5 sm:grid-cols-2">
             {FACILITIES.map((f, i) => (
               <FacilityCard key={f.title} {...f} delay={(i % 4) * 80} />
             ))}
@@ -142,12 +142,14 @@ export default function Facilities() {
 function FacilityCard({ icon: Icon, title, body, delay }) {
   const ref = useReveal(delay);
   return (
-    <div ref={ref} className="reveal premium-card rounded-2xl border border-navy-900/10 bg-white p-6">
-      <span className="premium-icon flex h-11 w-11 items-center justify-center rounded-full bg-amber-500 text-navy-900">
-        <Icon size={19} />
-      </span>
-      <h3 className="mt-4 font-serif text-base font-semibold text-navy-900">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-navy-600">{body}</p>
+    <div ref={ref} className="reveal premium-card flex h-full flex-col rounded-2xl border border-navy-900/10 bg-white p-6">
+      <div className="flex flex-row items-center gap-3">
+        <span className="premium-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500 text-navy-900">
+          <Icon size={19} />
+        </span>
+        <h3 className="min-w-0 font-serif text-base font-semibold text-navy-900">{title}</h3>
+      </div>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-navy-600">{body}</p>
     </div>
   );
 }
@@ -156,7 +158,7 @@ function StatChip({ icon: Icon, value, label }) {
   const [ref, display] = useCountUpOnView(value ?? "");
   return (
     <div ref={ref} className="text-center">
-      <Icon size={18} className="mx-auto text-teal-700" />
+      <Icon size={18} className="mx-auto text-navy-700" />
       {value != null && <p className="mt-1.5 font-serif text-lg font-bold text-navy-900">{display}</p>}
       <p className={`text-[11px] leading-tight text-navy-500 ${value == null ? "mt-2" : "mt-0.5"}`}>{label}</p>
     </div>

@@ -41,7 +41,7 @@ export default function AcademicsSyllabus() {
     <section id="academics" className="bg-paper py-20">
       <div className="mx-auto max-w-[1400px] px-6">
         <div className="mb-10 text-center">
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-700">Curriculum</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-navy-700">Curriculum</p>
           <h2 className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Syllabus by Class</h2>
           <p className="mx-auto mt-3 max-w-xl text-navy-500">See exactly what your child will learn, subject by subject.</p>
         </div>
@@ -87,7 +87,7 @@ export default function AcademicsSyllabus() {
             <div key={s._id}>
               <div className="mb-3 flex items-center justify-between">
                 {syllabi.length > 1 ? (
-                  <p className="text-sm font-bold text-teal-700">
+                  <p className="text-sm font-bold text-navy-700">
                     Semester {s.semester}
                     {s.academicYear ? ` · ${s.academicYear}` : ""}
                   </p>
@@ -144,7 +144,7 @@ function JourneyStage({ icon: Icon, stage, body, delay, isLast }) {
   return (
     <div className="flex flex-1 items-center gap-2">
       <div ref={ref} className="reveal premium-card group flex flex-1 flex-col items-center gap-2 rounded-2xl border border-navy-900/10 bg-white px-4 py-5 text-center">
-        <span className="premium-icon flex h-11 w-11 items-center justify-center rounded-full bg-teal-600 text-white shadow-md">
+        <span className="premium-icon flex h-11 w-11 items-center justify-center rounded-full bg-navy-600 text-white shadow-md">
           <Icon size={19} />
         </span>
         <p className="font-serif text-sm font-semibold text-navy-900">{stage}</p>

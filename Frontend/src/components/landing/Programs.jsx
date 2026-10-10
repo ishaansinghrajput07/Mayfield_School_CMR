@@ -46,11 +46,11 @@ const TONE_STYLES = {
     underline: "border-coral-500",
   },
   teal: {
-    card: "bg-teal-50 border-teal-200",
-    icon: "bg-teal-500 text-white border-teal-500",
-    range: "text-teal-700",
-    dot: "bg-teal-500",
-    underline: "border-teal-500",
+    card: "bg-navy-50 border-navy-200",
+    icon: "bg-navy-500 text-white border-navy-500",
+    range: "text-navy-700",
+    dot: "bg-navy-500",
+    underline: "border-navy-500",
   },
   amber: {
     card: "bg-amber-50 border-amber-200",
@@ -75,7 +75,7 @@ export default function Programs() {
       <ParallaxDecor tone="teal" />
       <div className="relative z-10 mx-auto max-w-[1560px]">
         <div ref={headRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Academic Programs</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Academic Programs</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
             Comprehensive education for every stage
           </h2>
@@ -111,8 +111,8 @@ function ProgramCard({ icon: Icon, stage, range, ages, points, tone, delay }) {
         ))}
       </ul>
       <a
-        href="#admissions"
-        className="group/cta mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 transition-colors hover:text-teal-700"
+        href="/?section=admissions"
+        className="group/cta mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 transition-colors hover:text-navy-700"
       >
         <span className={`border-b-2 pb-0.5 ${tone.underline}`}>Learn more</span>
         <ArrowRight size={14} className="transition-transform duration-300 group-hover/cta:translate-x-1.5" />

@@ -14,7 +14,7 @@ export default function AppLayout({ title }) {
   useEffect(() => setMobileOpen(false), [location.pathname]);
 
   return (
-    <div className="flex h-screen bg-surface">
+    <div className="flex h-screen bg-surface text-navy-800">
       <Sidebar
         role={user?.role}
         collapsed={collapsed}
@@ -24,9 +24,9 @@ export default function AppLayout({ title }) {
       />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Topbar title={title} onMenuClick={() => setMobileOpen(true)} />
-        <main className="app-bg flex-1 overflow-y-auto p-4 sm:p-6">
+        <main className="app-bg app-scrollbar flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-5 xl:px-9">
           {/* key={pathname} forces a remount on navigation, replaying the page-enter animation each time */}
-          <div key={location.pathname} className="page-enter">
+          <div key={location.pathname} className="page-enter mx-auto w-full max-w-[1600px]">
             <Outlet />
           </div>
         </main>

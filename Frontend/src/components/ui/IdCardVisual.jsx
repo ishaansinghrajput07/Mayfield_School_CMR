@@ -36,7 +36,7 @@ export default function IdCardVisual({ student }) {
 
       <div className="grid gap-6 lg:grid-cols-[280px_1fr] print:grid-cols-[280px_1fr]">
       {/* Photo + identity panel */}
-      <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-navy-700 via-navy-600 to-teal-600 p-6 text-center text-white shadow-card">
+      <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-navy-800 via-navy-700 to-navy-500 p-6 text-center text-white shadow-card">
         <div className="mx-auto flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-4 border-white/30 bg-white/10 text-4xl font-bold">
           {student.photo ? (
             <img src={student.photo} alt={fullName} className="h-full w-full object-cover" />
@@ -71,7 +71,7 @@ export default function IdCardVisual({ student }) {
       <div className="space-y-6">
         <div className="rounded-2xl border border-navy-100 bg-white p-5 shadow-card">
           <h3 className="mb-3 flex items-center gap-2 font-display text-sm font-bold text-navy-900">
-            <IdCardIcon size={16} className="text-teal-600" /> General Information
+            <IdCardIcon size={16} className="text-navy-600" /> General Information
           </h3>
           <table className="w-full text-sm">
             <tbody>

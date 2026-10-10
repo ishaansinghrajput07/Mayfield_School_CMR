@@ -30,34 +30,34 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-[#F8F7F2] to-[#F3EFE6]">
+    <div className="auth-page flex min-h-screen bg-surface">
       <AuthHero />
 
       {/* Form panel */}
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden px-5 py-12 sm:px-8">
+      <div className="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden px-4 py-5 sm:px-8 sm:py-8">
         <div className="pointer-events-none absolute inset-0 lg:hidden">
-          <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#6B9B72]/[0.12] blur-3xl" />
-          <div className="absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-[#A88B5B]/[0.10] blur-3xl" />
+          <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-navy-500/[0.10] blur-3xl" />
+          <div className="absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-amber-500/[0.10] blur-3xl" />
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 w-full max-w-sm"
+          className="relative z-10 w-full max-w-md"
         >
           {/* Mobile-only logo (hero is hidden below lg) */}
           <div className="mb-8 flex flex-col items-center text-center lg:hidden">
-            <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#4F7C5A] to-[#6B9B72] text-white shadow-md shadow-[#4F7C5A]/20">
+            <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-navy-900 text-white shadow-md shadow-navy-900/20">
               <GraduationCap size={22} />
             </div>
-            <h1 className="font-display text-lg font-bold text-[#2F3A2F]">St. Thomas Convent Hr. Sec. School</h1>
-            <p className="mt-1 text-sm text-[#1A1D18]">Indore · Sign in to your portal</p>
+            <h1 className="font-display text-lg font-bold text-navy-900">St. Thomas Convent Hr. Sec. School</h1>
+            <p className="mt-1 text-sm text-navy-500">Indore · Sign in to your school portal</p>
           </div>
 
-          <div className="rounded-[24px] border border-[#E7E2D8] bg-white p-7 shadow-[0_20px_50px_-15px_rgba(47,58,47,0.12)] transition-shadow duration-300 hover:shadow-[0_25px_60px_-15px_rgba(79,124,90,0.15)] sm:p-8">
-            <h2 className="font-display text-2xl font-bold text-[#2F3A2F]">Welcome back</h2>
-            <p className="mt-1.5 text-sm text-[#1A1D18]">Sign in to continue to your student portal.</p>
+          <div className="rounded-2xl border border-navy-100 bg-white p-5 shadow-[0_20px_50px_-15px_rgba(16,30,49,0.12)] transition-shadow duration-300 hover:shadow-[0_25px_60px_-15px_rgba(30,58,95,0.16)] sm:p-8">
+            <h2 className="font-display text-2xl font-bold text-navy-900">Welcome back</h2>
+            <p className="mt-1.5 text-sm text-navy-500">Sign in to continue to your school portal.</p>
 
             <form onSubmit={handleSubmit} className="mt-7 space-y-5" noValidate>
               <AuthInput
@@ -84,7 +84,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
-                    className="text-[#1A1D18] transition-colors hover:text-[#4F7C5A]"
+                    className="text-navy-400 transition-colors hover:text-school-red"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -93,16 +93,16 @@ export default function Login() {
               />
 
               <div className="flex items-center justify-between">
-                <label className="flex cursor-pointer items-center gap-2 text-sm text-[#1A1D18]">
+                <label className="flex cursor-pointer items-center gap-2 text-sm text-navy-600">
                   <input
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="h-4 w-4 rounded border-[#E7E2D8] text-[#4F7C5A] accent-[#4F7C5A]"
+                    className="h-4 w-4 rounded border-navy-200 text-navy-700 accent-navy-700"
                   />
                   Remember me
                 </label>
-                <Link to="/forgot-password" className="text-sm font-semibold text-[#4F7C5A] transition-colors hover:text-[#3d6248]">
+                <Link to="/forgot-password" className="text-sm font-semibold text-school-blue-dark transition-colors hover:text-school-red">
                   Forgot password?
                 </Link>
               </div>
@@ -110,7 +110,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[#4F7C5A] py-3.5 text-sm font-semibold text-white shadow-md shadow-[#4F7C5A]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#456b4f] hover:shadow-lg hover:shadow-[#4F7C5A]/25 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-navy-900 py-3.5 text-sm font-semibold text-white shadow-md shadow-navy-900/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-lg hover:shadow-navy-900/25 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {submitting ? (
                   <>
@@ -126,14 +126,14 @@ export default function Login() {
             </form>
 
             <div className="my-6 flex items-center gap-3">
-              <span className="h-px flex-1 bg-[#E7E2D8]" />
-              <span className="text-xs text-[#1A1D18]">or</span>
-              <span className="h-px flex-1 bg-[#E7E2D8]" />
+              <span className="h-px flex-1 bg-navy-100" />
+              <span className="text-xs text-navy-300">or</span>
+              <span className="h-px flex-1 bg-navy-100" />
             </div>
 
-            <p className="text-center text-sm text-[#1A1D18]">
+            <p className="text-center text-sm text-navy-500">
               New student?{" "}
-              <Link to="/signup" className="font-semibold text-[#4F7C5A] transition-colors hover:text-[#3d6248]">
+              <Link to="/signup" className="font-semibold text-school-blue-dark transition-colors hover:text-school-red">
                 Create an account
               </Link>
             </p>

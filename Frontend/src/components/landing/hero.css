@@ -4,10 +4,21 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: min(100svh, 960px);
+  min-height: 640px;
   margin-top: 0; 
   overflow: hidden;
-  background: #081b33;
+  background: #123552;
+}
+
+.hero-copy-panel {
+  position: absolute;
+  z-index: 1;
+  inset: 0 auto 0 0;
+  width: min(61%, 800px);
+  background: linear-gradient(105deg, rgba(23, 75, 112, 0.64), rgba(40, 127, 180, 0.46));
+  clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
+  pointer-events: none;
 }
 
 /* ============================
@@ -39,10 +50,10 @@
   background:
     linear-gradient(
       120deg,
-      rgba(2, 16, 36, .82) 0%,
-      rgba(3, 28, 59, .60) 40%,
-      rgba(6, 20, 45, .55) 70%,
-      rgba(0,0,0,.45) 100%
+      rgba(11, 21, 32, .42) 0%,
+      rgba(15, 32, 49, .32) 42%,
+      rgba(15, 32, 49, .24) 72%,
+      rgba(0, 0, 0, .2) 100%
     );
   z-index: 2;
 }
@@ -59,7 +70,7 @@
       rgba(255,255,255,.08),
       transparent 40%),
       radial-gradient(circle at bottom right,
-      rgba(52,152,219,.18),
+      rgba(40,127,180,.16),
       transparent 45%);
   animation: gradientMove 14s linear infinite;
 }
@@ -95,6 +106,42 @@
   padding-left: 8%; 
   box-sizing: border-box;
   width: 100%;
+}
+
+.hero-home-copy {
+  text-shadow: 0 2px 16px rgba(7, 25, 42, 0.2);
+}
+
+.hero-school-title {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.65rem 1.25rem 0.75rem;
+  border-bottom: 4px solid var(--school-red);
+  background: rgba(25, 102, 151, 0.94);
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+  text-shadow: none;
+}
+
+.hero-school-motto {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  border-left: 5px solid var(--school-red);
+  background: rgba(255, 255, 255, 0.94);
+  color: #173b56;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.4;
+  text-shadow: none;
 }
 
 /* ============================
@@ -137,13 +184,13 @@
 .swiper-pagination-bullet-active {
   width: 34px;
   border-radius: 50px;
-  background: white;
+  background: var(--school-red);
 }
 
 .hero-slide-placeholder {
   width: 100%;
   height: 100%;
-  background: #081b33;
+  background: #123552;
 }
 
 /* ============================
@@ -151,7 +198,7 @@
 ============================ */
 @keyframes heroZoom {
   0% { transform: scale(1); }
-  100% { transform: scale(1.12); }
+  100% { transform: scale(1.06); }
 }
 
 @keyframes gradientMove {
@@ -176,42 +223,69 @@
 ============================ */
 @media (max-width: 768px) {
   
+  .hero-copy-panel {
+    width: 100%;
+    background: linear-gradient(105deg, rgba(23, 75, 112, 0.64), rgba(40, 127, 180, 0.48));
+    clip-path: none;
+  }
+
   .hero-section {
-    min-height: 100svh; 
-    height: auto; 
-    padding-bottom: 50px; 
+    height: auto;
+    min-height: max(640px, 100svh);
+    padding-bottom: 1.5rem;
   }
 
-  .hero-content {
-    justify-content: flex-start; 
-    padding-top: 140px; 
-    padding-bottom: 30px; 
-    padding-left: 5%;
-    padding-right: 5%;
+  .hero-section > div.relative {
+    min-height: inherit;
+    padding-top: 7.5rem;
+    padding-bottom: 4.5rem;
   }
 
-  .hero-content h1, 
-  .hero-content h2 {
-    font-size: 2.2rem; 
-    line-height: 1.2;
-    margin-bottom: 10px;
+  .hero-school-title {
+    font-size: clamp(1.9rem, 7vw, 2.7rem);
   }
 
-  .hero-content p {
-    font-size: 0.95rem;
-    margin-bottom: 25px; 
+  .hero-school-motto {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  .hero-slide img {
+    object-position: center;
+  }
+
+  .hero-btn:hover {
+    transform: none;
   }
 
   .your-cards-wrapper-class {
-    margin-top: 30px; 
-    gap: 10px; 
+    flex-wrap: wrap;
+    gap: 0.625rem;
   }
 
   .hero-slide img {
     animation-duration: 10s;
   }
 
+  @media (max-width: 480px) {
+    .hero-section {
+      min-height: max(620px, 100svh);
+    }
+
+    .hero-section > div.relative {
+      padding-inline: 1.25rem;
+      padding-top: 7rem;
+    }
+  }
+
   .animate-float {
     animation: floatAnimation 8s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide img,
+  .hero-overlay::after,
+  .scroll-indicator {
+    animation: none !important;
   }
 }

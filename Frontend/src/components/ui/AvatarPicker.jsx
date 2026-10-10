@@ -63,13 +63,13 @@ export default function AvatarPicker({ open, currentAvatar, name, onClose, onSav
               key={a.id}
               onClick={() => setSelected(a.url)}
               className={`relative rounded-xl border-2 p-1.5 transition-colors ${
-                selected === a.url ? "border-teal-500 bg-teal-50" : "border-transparent hover:border-navy-100"
+                selected === a.url ? "border-navy-500 bg-navy-50" : "border-transparent hover:border-navy-100"
               }`}
               title={a.label}
             >
               <img src={a.url} alt={a.label} className="aspect-square w-full rounded-lg object-cover" />
               {selected === a.url && (
-                <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-teal-500 text-white">
+                <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-navy-500 text-white">
                   <Check size={12} />
                 </span>
               )}

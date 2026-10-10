@@ -34,7 +34,7 @@ export default function Contact() {
       <ParallaxDecor tone="navy" />
       <div ref={ref} className="reveal mx-auto max-w-[1560px]">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Get in Touch</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Get in Touch</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">We'd love to meet you</h2>
           <p className="mt-4 text-navy-600">
             Have a question about admissions, fees, or a school visit? Reach out and our office
@@ -68,7 +68,7 @@ export default function Contact() {
               <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
                 <p className="font-serif text-lg font-semibold text-navy-900">Message sent</p>
                 <p className="mt-1 text-sm text-navy-500">Our office will reach out within one business day.</p>
-                <button type="button" onClick={() => setSent(false)} className="mt-4 text-sm font-semibold text-teal-700 hover:text-teal-900">
+                <button type="button" onClick={() => setSent(false)} className="mt-4 text-sm font-semibold text-navy-700 hover:text-navy-900">
                   Send another message
                 </button>
               </div>
@@ -127,14 +127,14 @@ export default function Contact() {
                 {[Facebook, Instagram, Youtube].map((Icon, i) => (
                   <a
                     key={i}
-                    href="#top"
+                    href="/"
                     className="flex h-9 w-9 items-center justify-center rounded-full border border-navy-100 text-navy-500 transition-colors hover:border-navy-900 hover:text-navy-900"
                   >
                     <Icon size={15} />
                   </a>
                 ))}
               </div>
-              <a href="tel:+919876543210" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-800 hover:text-teal-700">
+              <a href="tel:+919876543210" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-800 hover:text-navy-700">
                 <Phone size={14} /> Call the office
               </a>
             </div>

@@ -70,10 +70,10 @@ export default function MobileVerifyField({ label, value, onChange, purpose, ver
         <input
           className={
             light
-              ? "input"
+              ? "input min-w-0 flex-1"
               : sage
               ? "w-full rounded-xl border border-[#E7E2D8] bg-[#F3EFE6]/60 px-4 py-3.5 text-sm text-[#2F3A2F] outline-none transition-all duration-200 placeholder:text-[#1A1D18] hover:border-[#4F7C5A]/30 focus:border-[#4F7C5A]/60 focus:bg-white focus:shadow-[0_0_0_4px_rgba(79,124,90,0.10)] disabled:opacity-60"
-              : "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none backdrop-blur-sm transition-all duration-200 placeholder:text-slate-500 hover:border-white/20 focus:border-teal-400/70 focus:bg-white/[0.06] focus:shadow-[0_0_0_4px_rgba(20,184,166,0.12)] disabled:opacity-60"
+              : "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none backdrop-blur-sm transition-all duration-200 placeholder:text-slate-500 hover:border-white/20 focus:border-sky-400/70 focus:bg-white/[0.06] focus:shadow-[0_0_0_4px_rgba(56,189,248,0.12)] disabled:opacity-60"
           }
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -91,10 +91,10 @@ export default function MobileVerifyField({ label, value, onChange, purpose, ver
             disabled={sending || cooldown > 0 || !value}
             className={
               light
-                ? "shrink-0 rounded-xl border border-navy-200 px-3 text-xs font-semibold text-navy-500 transition-colors hover:border-teal-500 hover:text-teal-600 disabled:opacity-40"
+                ? "shrink-0 rounded-xl border border-navy-200 px-3 text-xs font-semibold text-navy-500 transition-colors hover:border-navy-500 hover:text-navy-600 disabled:opacity-40"
                 : sage
                 ? "shrink-0 rounded-xl border border-[#E7E2D8] px-3 text-xs font-semibold text-[#1A1D18] transition-colors hover:border-[#4F7C5A]/50 hover:text-[#4F7C5A] disabled:opacity-40"
-                : "shrink-0 rounded-xl border border-white/10 px-3 text-xs font-semibold text-slate-300 transition-colors hover:border-teal-400/50 hover:text-teal-400 disabled:opacity-40"
+                : "shrink-0 rounded-xl border border-white/10 px-3 text-xs font-semibold text-slate-300 transition-colors hover:border-sky-400/50 hover:text-sky-300 disabled:opacity-40"
             }
           >
             {cooldown > 0 ? `Resend in ${cooldown}s` : otpSent ? "Resend OTP" : "Send OTP"}
@@ -107,10 +107,10 @@ export default function MobileVerifyField({ label, value, onChange, purpose, ver
           <input
             className={
               light
-                ? "input"
+                ? "input min-w-0 flex-1"
                 : sage
                 ? "w-full rounded-xl border border-[#E7E2D8] bg-[#F3EFE6]/60 px-4 py-3.5 text-sm text-[#2F3A2F] outline-none transition-all duration-200 placeholder:text-[#1A1D18] hover:border-[#4F7C5A]/30 focus:border-[#4F7C5A]/60 focus:bg-white focus:shadow-[0_0_0_4px_rgba(79,124,90,0.10)]"
-                : "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none backdrop-blur-sm transition-all duration-200 placeholder:text-slate-500 hover:border-white/20 focus:border-teal-400/70 focus:bg-white/[0.06] focus:shadow-[0_0_0_4px_rgba(20,184,166,0.12)]"
+                : "w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white outline-none backdrop-blur-sm transition-all duration-200 placeholder:text-slate-500 hover:border-white/20 focus:border-sky-400/70 focus:bg-white/[0.06] focus:shadow-[0_0_0_4px_rgba(56,189,248,0.12)]"
             }
             value={code}
             onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
@@ -122,7 +122,7 @@ export default function MobileVerifyField({ label, value, onChange, purpose, ver
             onClick={handleVerify}
             disabled={verifying}
             className={`shrink-0 inline-flex items-center gap-1.5 rounded-xl px-3 text-xs font-semibold text-white transition-colors disabled:opacity-50 ${
-              sage ? "bg-[#4F7C5A] hover:bg-[#456b4f]" : "bg-teal-500 hover:bg-teal-600"
+              sage ? "bg-[#4F7C5A] hover:bg-[#456b4f]" : "bg-navy-500 hover:bg-navy-600"
             }`}
           >
             <ShieldCheck size={14} /> {verifying ? "Checking..." : "Verify"}

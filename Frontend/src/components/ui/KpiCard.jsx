@@ -3,11 +3,11 @@ import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import useCountUp from "../../hooks/useCountUp";
 
 const THEME = {
-  navy: { bg: "bg-gradient-to-br from-navy-500 to-navy-700", ring: "group-hover:ring-navy-100" },
-  teal: { bg: "bg-gradient-to-br from-teal-400 to-teal-600", ring: "group-hover:ring-teal-100" },
-  amber: { bg: "bg-gradient-to-br from-amber-400 to-amber-600", ring: "group-hover:ring-amber-100" },
-  violet: { bg: "bg-gradient-to-br from-violet-400 to-violet-600", ring: "group-hover:ring-violet-100" },
-  red: { bg: "bg-gradient-to-br from-red-400 to-red-600", ring: "group-hover:ring-red-100" },
+  navy: { bg: "bg-navy-50 text-navy-700", ring: "group-hover:ring-navy-100" },
+  teal: { bg: "bg-teal-50 text-teal-700", ring: "group-hover:ring-teal-100" },
+  amber: { bg: "bg-amber-50 text-amber-700", ring: "group-hover:ring-amber-100" },
+  violet: { bg: "bg-violet-50 text-violet-700", ring: "group-hover:ring-violet-100" },
+  red: { bg: "bg-red-50 text-red-600", ring: "group-hover:ring-red-100" },
 };
 
 /**
@@ -29,14 +29,11 @@ export default function KpiCard({ label, value, suffix = "", icon: Icon, accent 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -3 }}
-      className={`group relative overflow-hidden rounded-2xl border border-navy-100 bg-white p-5 shadow-card ring-1 ring-transparent transition-shadow duration-200 hover:shadow-lg ${t.ring}`}
+      className={`group relative overflow-hidden rounded-xl border border-navy-100/80 bg-white p-5 shadow-card ring-1 ring-transparent transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${t.ring}`}
     >
-      {/* Soft gradient wash in the corner - the "premium SaaS card" glow */}
-      <div className={`pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-[0.07] blur-2xl ${t.bg}`} aria-hidden />
-
       <div className="relative flex items-start justify-between">
-        <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-sm ${t.bg}`}>
-          {Icon && <Icon size={19} />}
+        <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${t.bg}`}>
+          {Icon && <Icon size={18} strokeWidth={1.9} />}
         </div>
         {hasTrend && (
           <span
@@ -50,7 +47,7 @@ export default function KpiCard({ label, value, suffix = "", icon: Icon, accent 
         )}
       </div>
 
-      <p className="relative mt-4 font-display text-2xl font-bold text-navy-900">
+      <p className="relative mt-4 font-display text-[26px] font-bold tracking-tight text-navy-900">
         {displayValue}
         {suffix}
       </p>

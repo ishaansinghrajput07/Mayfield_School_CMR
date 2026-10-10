@@ -18,7 +18,7 @@ export default function JourneyTimeline() {
       <ParallaxDecor tone="teal" />
       <div className="relative mx-auto max-w-[1560px]">
         <div ref={headRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Our Story</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Our Story</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">School Journey</h2>
           <p className="mt-3 text-navy-600">Sixteen years of milestones, one child at a time.</p>
         </div>

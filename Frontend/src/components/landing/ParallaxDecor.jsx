@@ -8,11 +8,11 @@ export default function ParallaxDecor({ tone = "amber" }) {
   const scrollY = useScrollY();
 
   const colors = {
-    amber: ["bg-amber-200/30", "bg-teal-200/25"],
-    teal: ["bg-teal-200/30", "bg-amber-200/20"],
-    navy: ["bg-navy-200/20", "bg-amber-200/20"],
+    amber: ["bg-amber-200/30", "bg-navy-200/25"],
+    teal: ["bg-navy-200/30", "bg-amber-200/20"],
+    navy: ["bg-navy-200/20", "bg-school-red/10"],
     violet: ["bg-violet-200/25", "bg-coral-200/20"],
-  }[tone] || ["bg-amber-200/30", "bg-teal-200/25"];
+  }[tone] || ["bg-amber-200/30", "bg-navy-200/25"];
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">

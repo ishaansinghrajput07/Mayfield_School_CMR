@@ -35,7 +35,7 @@ export default function FAQ() {
       <ParallaxDecor tone="amber" />
       <div className="mx-auto max-w-3xl">
         <div ref={headRef} className="reveal text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">FAQ</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">FAQ</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Admissions, answered</h2>
         </div>
 

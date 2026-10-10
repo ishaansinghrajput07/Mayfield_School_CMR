@@ -19,7 +19,7 @@ const VALUES = [
     icon: Compass,
     title: "Innovation",
     body: "Modern teaching methods and smart classrooms sit alongside — not instead of — real classroom attention.",
-    tone: "bg-teal-500 text-white border-teal-500",
+    tone: "bg-navy-500 text-white border-navy-500",
   },
   {
     icon: Users,
@@ -37,7 +37,7 @@ export default function About() {
       <ParallaxDecor tone="amber" />
       <div className="relative z-10 mx-auto max-w-[1560px]">
         <div ref={introRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">About Our School</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">About Our School</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
             Shaping tomorrow's leaders, today
           </h2>

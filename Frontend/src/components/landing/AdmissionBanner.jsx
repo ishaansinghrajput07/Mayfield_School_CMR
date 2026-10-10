@@ -9,13 +9,13 @@ const MESSAGE = `Admissions open for 2026-27 — apply before ${ADMISSION_DEADLI
 
 export default function AdmissionBanner() {
   return (
-    <div className="relative z-[60] overflow-hidden bg-gradient-to-r from-amber-500 via-coral-500 to-amber-500 py-2">
+    <div className="relative z-[60] overflow-hidden bg-navy-500 py-2.5">
       <div className="animate-marquee-reverse flex w-max items-center gap-10 whitespace-nowrap">
         {[0, 1].map((copy) => (
           <div key={copy} className="flex items-center gap-10 pr-10" aria-hidden={copy === 1}>
             {Array.from({ length: 3 }).map((_, i) => (
-              <span key={i} className="flex items-center gap-2 text-xs font-bold text-navy-900 sm:text-sm">
-                <GraduationCap size={15} />
+              <span key={i} className="flex items-center gap-2 text-xs font-semibold tracking-wide text-white sm:text-sm">
+                <GraduationCap size={15} className="text-amber-400" />
                 {MESSAGE}
               </span>
             ))}

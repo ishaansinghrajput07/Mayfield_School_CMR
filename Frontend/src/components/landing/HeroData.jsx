@@ -5,7 +5,7 @@
 // assets/hero/ freely; you don't need to touch this array's length to
 // match exactly, though keeping them in sync gives the best result.
 const CAPTIONS = [
-  { title: "Welcome to St. Thomas Convent School", subtitle: "Nurturing Minds • Building Character • Inspiring Excellence" },
+  { title: "Nurturing minds, building character", subtitle: "A school community that helps every learner grow with confidence." },
   { title: "Interactive Smart Classrooms", subtitle: "Technology-enabled learning that inspires curiosity and confidence." },
   { title: "Modern Science Laboratories", subtitle: "Hands-on experiments that transform ideas into discoveries." },
   { title: "Future Ready Computer Labs", subtitle: "Empowering students with digital skills, coding, and innovation." },

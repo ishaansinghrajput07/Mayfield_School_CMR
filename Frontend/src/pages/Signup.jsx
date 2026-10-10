@@ -134,36 +134,36 @@ export default function Signup() {
   const progressPct = (step / (STEPS.length - 1)) * 100;
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-[#F8F7F2] to-[#F3EFE6]">
+    <div className="auth-page flex min-h-screen bg-surface">
       <AuthHero />
 
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden px-5 py-10 sm:px-8">
+      <div className="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden px-4 py-4 sm:px-8 sm:py-6">
         <div className="pointer-events-none absolute inset-0 lg:hidden">
-          <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#6B9B72]/[0.12] blur-3xl" />
-          <div className="absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-[#A88B5B]/[0.10] blur-3xl" />
+          <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-navy-500/[0.10] blur-3xl" />
+          <div className="absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-amber-500/[0.10] blur-3xl" />
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 w-full max-w-xl"
+          className="relative z-10 w-full max-w-2xl"
         >
           {/* Mobile-only logo */}
           <div className="mb-6 flex flex-col items-center text-center lg:hidden">
-            <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#4F7C5A] to-[#6B9B72] text-white shadow-md shadow-[#4F7C5A]/20">
+            <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-navy-900 text-white shadow-md shadow-navy-900/20">
               <GraduationCap size={22} />
             </div>
-            <h1 className="font-display text-lg font-bold text-[#2F3A2F]">Create your student account</h1>
-            <p className="mt-1 text-sm text-[#1A1D18]">Your digital ID card is generated automatically</p>
+            <h1 className="font-display text-lg font-bold text-navy-900">Create your student account</h1>
+            <p className="mt-1 text-sm text-navy-500">Your digital ID card is generated automatically</p>
           </div>
 
-          <div className="rounded-[24px] border border-[#E7E2D8] bg-white p-6 shadow-[0_20px_50px_-15px_rgba(47,58,47,0.12)] sm:p-8">
+          <div className="rounded-2xl border border-navy-100 bg-white p-4 shadow-[0_20px_50px_-15px_rgba(16,30,49,0.12)] sm:p-7 lg:p-8">
             {!success && (
               <>
                 <div className="hidden text-center lg:block">
-                  <h2 className="font-display text-2xl font-bold text-[#2F3A2F]">Create your student account</h2>
-                  <p className="mt-1.5 text-sm text-[#1A1D18]">Your digital ID card is generated automatically</p>
+                  <h2 className="font-display text-2xl font-bold text-navy-900">Create your student account</h2>
+                  <p className="mt-1.5 text-sm text-navy-500">Your digital ID card is generated automatically</p>
                 </div>
 
                 {/* Labeled step indicator */}
@@ -173,28 +173,28 @@ export default function Signup() {
                       <span
                         className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-colors duration-300 ${
                           i < step
-                            ? "bg-[#6B9B72] text-white"
+                            ? "bg-school-red text-white"
                             : i === step
-                            ? "bg-gradient-to-br from-[#4F7C5A] to-[#6B9B72] text-white shadow-md shadow-[#4F7C5A]/25"
-                            : "bg-[#F3EFE6] text-[#4A4F45]"
+                            ? "bg-navy-900 text-white shadow-md shadow-navy-900/20"
+                            : "bg-navy-50 text-navy-400"
                         }`}
                       >
                         {i < step ? <Check size={14} /> : <s.icon size={14} />}
                       </span>
-                      <span className={`hidden text-[11px] font-medium sm:block ${i === step ? "text-[#2F3A2F]" : "text-[#4A4F45]"}`}>{s.label}</span>
+                      <span className={`hidden text-[11px] font-medium sm:block ${i === step ? "text-navy-900" : "text-navy-400"}`}>{s.label}</span>
                     </div>
                   ))}
                 </div>
                 {/* Animated progress bar */}
-                <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-[#F3EFE6]">
+                <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-navy-100">
                   <motion.div
                     animate={{ width: `${progressPct}%` }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="h-full rounded-full bg-gradient-to-r from-[#4F7C5A] to-[#6B9B72]"
+                    className="h-full rounded-full bg-school-red"
                   />
                 </div>
 
-                <p className="mb-1 mt-5 text-xs font-bold uppercase tracking-wide text-[#4F7C5A]">
+                <p className="mb-1 mt-5 text-xs font-bold uppercase tracking-wide text-navy-700">
                   Step {step + 1} of {STEPS.length} · {STEPS[step].label}
                 </p>
 
@@ -221,7 +221,7 @@ export default function Signup() {
                               value={form.password}
                               onChange={set("password")}
                               rightAdornment={
-                                <button type="button" onClick={() => setShowPassword((v) => !v)} className="text-[#4A4F45] hover:text-[#4F7C5A]" aria-label="Toggle password visibility">
+                                <button type="button" onClick={() => setShowPassword((v) => !v)} className="text-navy-400 hover:text-school-red" aria-label="Toggle password visibility">
                                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                                 </button>
                               }
@@ -238,7 +238,7 @@ export default function Signup() {
                             rightAdornment={
                               form.confirmPassword &&
                               (form.confirmPassword === form.password ? (
-                                <CheckCircle2 size={16} className="text-[#4F7C5A]" />
+                                <CheckCircle2 size={16} className="text-navy-700" />
                               ) : (
                                 <span className="text-xs text-red-500">✕</span>
                               ))
@@ -258,7 +258,7 @@ export default function Signup() {
                             purpose="signup_student_mobile"
                             verified={!!mobileVerifyToken}
                             onVerified={setMobileVerifyToken}
-                            variant="sage"
+                            variant="light"
                           />
                           <MobileVerifyField
                             label="Parent mobile number"
@@ -267,7 +267,7 @@ export default function Signup() {
                             purpose="signup_parent_mobile"
                             verified={!!parentMobileVerifyToken}
                             onVerified={setParentMobileVerifyToken}
-                            variant="sage"
+                            variant="light"
                           />
                         </div>
                         <div className="grid gap-4 sm:grid-cols-2">
@@ -279,7 +279,7 @@ export default function Signup() {
                             <option value="other">Other</option>
                           </AuthSelect>
                         </div>
-                        {age !== null && <p className="-mt-2 text-xs text-[#4A4F45]">Age: {age} years</p>}
+                        {age !== null && <p className="-mt-2 text-xs text-navy-400">Age: {age} years</p>}
                         <AuthInput id="address" label="Address" icon={MapPin} value={form.address} onChange={set("address")} />
                       </div>
                     )}
@@ -324,7 +324,7 @@ export default function Signup() {
 
                     {step === 3 && (
                       <div>
-                        <div className="grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl border border-[#E7E2D8] bg-[#F8F7F2] p-4 text-sm sm:p-5">
+                        <div className="grid grid-cols-1 gap-x-6 gap-y-4 rounded-xl border border-navy-100 bg-surface p-4 text-sm sm:grid-cols-2 sm:p-5">
                           <Review label="Name" value={form.fullName} />
                           <Review label="Email" value={form.email} />
                           <Review label="Mobile" value={form.mobile ? `${form.mobile} ✓ verified` : ""} />
@@ -338,7 +338,7 @@ export default function Signup() {
                           <Review label="Academic year" value={form.academicYear} />
                           <Review label="Subjects" value={form.subjects || "—"} />
                         </div>
-                        <p className="mt-5 text-xs text-[#4A4F45]">
+                        <p className="mt-5 text-xs text-navy-400">
                           A digital ID card is generated for you automatically once you create your account —
                           photo upload can be added afterward from your profile.
                         </p>
@@ -352,7 +352,7 @@ export default function Signup() {
                     type="button"
                     onClick={back}
                     disabled={step === 0}
-                    className="inline-flex items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-semibold text-[#1A1D18] transition-colors hover:text-[#2F3A2F] disabled:opacity-0"
+                    className="inline-flex items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-semibold text-navy-600 transition-colors hover:text-navy-900 disabled:opacity-0"
                   >
                     <ChevronLeft size={16} /> Back
                   </button>
@@ -361,7 +361,7 @@ export default function Signup() {
                     <button
                       type="button"
                       onClick={next}
-                      className="group inline-flex items-center gap-1.5 rounded-xl bg-[#4F7C5A] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#4F7C5A]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#456b4f] hover:shadow-lg hover:shadow-[#4F7C5A]/25"
+                      className="group inline-flex items-center gap-1.5 rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-navy-900/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-lg hover:shadow-navy-900/25"
                     >
                       Continue <ChevronRight size={16} className="transition-transform duration-200 group-hover:translate-x-1" />
                     </button>
@@ -370,7 +370,7 @@ export default function Signup() {
                       type="button"
                       onClick={handleSubmit}
                       disabled={submitting}
-                      className="inline-flex items-center gap-1.5 rounded-xl bg-[#4F7C5A] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#4F7C5A]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#456b4f] hover:shadow-lg hover:shadow-[#4F7C5A]/25 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-navy-900/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-lg hover:shadow-navy-900/25 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                     >
                       {submitting ? (
                         <>
@@ -397,21 +397,21 @@ export default function Signup() {
                     initial={{ scale: 0, rotate: -20 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", stiffness: 260, damping: 16 }}
-                    className="flex h-16 w-16 items-center justify-center rounded-full bg-[#4F7C5A]/10 text-[#4F7C5A]"
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-navy-50 text-navy-700"
                   >
                     <Check size={32} strokeWidth={3} />
                   </motion.div>
-                  <h3 className="mt-5 font-display text-xl font-bold text-[#2F3A2F]">Account created!</h3>
-                  <p className="mt-1.5 text-sm text-[#1A1D18]">Redirecting you to your dashboard...</p>
+                  <h3 className="mt-5 font-display text-xl font-bold text-navy-900">Account created!</h3>
+                  <p className="mt-1.5 text-sm text-navy-500">Redirecting you to your dashboard...</p>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
           {!success && (
-            <p className="mt-6 text-center text-xs text-[#4A4F45]">
+            <p className="mt-6 text-center text-xs text-navy-400">
               Already have an account?{" "}
-              <Link to="/login" className="font-semibold text-[#4F7C5A] transition-colors hover:text-[#3d6248]">
+              <Link to="/login" className="font-semibold text-school-blue-dark transition-colors hover:text-school-red">
                 Log in
               </Link>
             </p>
@@ -425,8 +425,8 @@ export default function Signup() {
 function Review({ label, value }) {
   return (
     <div>
-      <p className="text-xs text-[#4A4F45]">{label}</p>
-      <p className="font-medium text-[#2F3A2F]">{value || "—"}</p>
+      <p className="text-xs text-navy-400">{label}</p>
+      <p className="font-medium text-navy-900">{value || "—"}</p>
     </div>
   );
 }

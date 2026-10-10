@@ -1,96 +1,74 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 import { heroSlides } from "./HeroData";
 
 export default function HeroContent({ activeSlide }) {
   const slide = heroSlides[activeSlide];
 
   return (
-    <div className="w-full max-w-3xl">
-      
-      {/* Badge */}
+    <div className="hero-home-copy w-full max-w-[38rem]">
+      <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-white sm:mb-5 sm:text-sm">
+        <GraduationCap size={18} className="text-school-red" />
+        CBSE Affiliated School <span className="text-white/60">•</span> Indore
+      </div>
+
+      <h1 className="hero-school-title">
+        St. Thomas Convent School
+      </h1>
+
+      <p className="hero-school-motto">
+        Learning with purpose. Growing with confidence.
+      </p>
+
+      <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/95 sm:mt-6 sm:text-lg sm:leading-8">
+        A welcoming school community where strong academics, caring guidance,
+        and opportunities beyond the classroom help every learner thrive.
+      </p>
+
       <AnimatePresence mode="wait">
         <motion.div
-          key={`badge-${slide.id}`}
-          initial={{ opacity: 0, y: 20 }}
+          key={slide.id}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4 }}
-          className="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 backdrop-blur-md"
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.35 }}
+          className="mt-5 max-w-xl border-l-2 border-school-red pl-4 sm:mt-6"
+          aria-live="polite"
         >
-          <span className="text-sm font-medium tracking-wide text-white">
-            Since 2010 • CBSE Affiliated
-          </span>
+          <p className="text-sm font-semibold text-white sm:text-base">{slide.title}</p>
+          <p className="mt-1 text-sm leading-relaxed text-white/80">{slide.subtitle}</p>
         </motion.div>
       </AnimatePresence>
 
-      {/* Heading */}
-      <AnimatePresence mode="wait">
-        <motion.h1
-          key={slide.title}
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.7 }}
-          className="font-serif text-5xl font-bold leading-tight text-white md:text-6xl lg:text-7xl"
-        >
-          {slide.title}
-        </motion.h1>
-      </AnimatePresence>
-
-      {/* Subtitle */}
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={slide.subtitle}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{
-            duration: 0.7,
-            delay: 0.15,
-          }}
-          className="mt-8 max-w-2xl text-lg leading-8 text-white/90 md:text-xl"
-        >
-          {slide.subtitle}
-        </motion.p>
-      </AnimatePresence>
-
-      {/* Buttons */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="mt-10 flex flex-wrap gap-5"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+        className="mt-6 flex flex-wrap gap-3 sm:mt-7"
       >
         <Link
-           to="/apply"
-          className="hero-btn inline-flex items-center gap-2 rounded-full bg-amber-400 px-8 py-4 text-sm font-semibold text-slate-900"
+          to="/?section=contact"
+          className="hero-btn inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-school-red px-5 py-3 text-sm font-semibold text-white hover:bg-school-red-dark sm:px-6"
         >
-          Apply Now
+          Contact the School
           <ArrowRight size={18} />
         </Link>
 
-        <a
-          href="#about"
-          className="hero-btn inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md"
+        <Link
+          to="/?section=admissions"
+          className="hero-btn inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/50 bg-navy-800/40 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md sm:px-6"
         >
           <BookOpen size={18} />
-          Explore Campus
-        </a>
+          Admissions
+        </Link>
       </motion.div>
 
-      {/* NEW: Ratings Line */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7 }}
-        className="mt-8 flex flex-wrap items-center gap-2 text-sm font-medium text-white/90 lg:text-base"
-      >
-        <span className="text-lg tracking-widest text-amber-400">⭐⭐⭐⭐⭐</span>
-        <span>4.9 Rated <span className="mx-2 opacity-50">|</span> 1200+ Families <span className="mx-2 opacity-50">|</span> 25+ Years</span>
-      </motion.div>
-
+      <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold uppercase tracking-wide text-white/90 sm:mt-6 sm:text-sm">
+        <span>Since 2010</span>
+        <span>Nursery to Class XII</span>
+        <span>CBSE Curriculum</span>
+      </div>
     </div>
   );
 }

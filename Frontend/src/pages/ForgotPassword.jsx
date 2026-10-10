@@ -23,10 +23,10 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-navy-900 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-navy-900 px-4 py-5 sm:py-8">
       <div className="w-full max-w-sm">
-        <div className="mb-8 flex flex-col items-center text-center">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500 text-white">
+        <div className="mb-6 flex flex-col items-center text-center">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy-500 text-white">
             <GraduationCap size={26} />
           </div>
           <h1 className="font-display text-xl font-bold text-white">Reset your password</h1>
@@ -61,15 +61,15 @@ export default function ForgotPassword() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <button type="submit" disabled={submitting} className="btn-primary w-full !bg-teal-500 hover:!bg-teal-600">
+              <button type="submit" disabled={submitting} className="btn-primary w-full">
                 {submitting ? "Sending..." : "Send reset link"}
               </button>
             </form>
           )}
         </div>
 
-        <p className="mt-6 text-center text-xs text-navy-400">
-          <Link to="/login" className="inline-flex items-center gap-1 font-semibold text-teal-400 hover:text-teal-300">
+        <p className="mt-4 text-center text-xs text-navy-400">
+          <Link to="/login" className="inline-flex items-center gap-1 font-semibold text-navy-200 hover:text-white">
             <ArrowLeft size={12} /> Back to sign in
           </Link>
         </p>

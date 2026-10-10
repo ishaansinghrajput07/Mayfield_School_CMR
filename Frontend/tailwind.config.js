@@ -10,19 +10,25 @@ export default {
         site: "1600px",
       },
       colors: {
-        // Design tokens for the School ERP - deep navy for trust/authority,
-        // teal for secondary actions, amber as the single warm accent for alerts.
+        // Shared school identity: blue is the primary brand, red is reserved
+        // for emphasis, while teal and amber remain meaningful status colors.
         navy: {
-          50: "#eef2f6",
-          100: "#d4dee8",
-          200: "#a9bdd1",
-          300: "#7e9cba",
-          400: "#4a6f96",
-          500: "#1E3A5F",
-          600: "#1a3252",
-          700: "#152841",
-          800: "#101e31",
-          900: "#0b1520",
+          50: "#edf5fa",
+          100: "#d8e8f2",
+          200: "#b9d4e5",
+          300: "#829fb4",
+          400: "#5d7b92",
+          500: "#287fb4",
+          600: "#226f9e",
+          700: "#1c5f8d",
+          800: "#174b70",
+          900: "#123552",
+        },
+        school: {
+          blue: "#287fb4",
+          "blue-dark": "#1c5f8d",
+          red: "#c6283d",
+          "red-dark": "#a91f31",
         },
         teal: {
           50: "#eafafa",
@@ -37,31 +43,29 @@ export default {
           500: "#E8A33D",
           600: "#c98726",
         },
-        // Landing-page-only accents: a premium violet + coral pair layered
-        // on top of the existing navy/teal/amber system for the marketing
-        // site, kept out of the dashboard chrome.
+        // Muted supporting tones keep the school site within the same
+        // navy, teal, and brass brand system as the portals.
         violet: {
-          50: "#f1efff",
-          100: "#e0dcfe",
-          400: "#8b7cf6",
-          500: "#6C5CE7",
-          600: "#5541d1",
-          700: "#4230a6",
+          50: "#edf5fa",
+          100: "#d8e8f2",
+          400: "#5d9bc2",
+          500: "#287fb4",
+          600: "#226f9e",
+          700: "#1c5f8d",
         },
         coral: {
-          50: "#fff1ee",
-          100: "#ffdcd4",
-          400: "#ff8a79",
-          500: "#FF6B5C",
-          600: "#e94f3f",
+          50: "#fceef0",
+          100: "#f5d5da",
+          400: "#dc7584",
+          500: "#c6283d",
+          600: "#a91f31",
         },
-        surface: "#F7F8FA",
-        // Public school-site palette (Landing page only) - warm paper in
-        // place of the app's cool grey surface, so the homepage reads as a
-        // school prospectus rather than dashboard chrome bleeding outward.
+        surface: "#f4f7fa",
+        // A cool, low-contrast neutral keeps long-form landing sections easy
+        // to read while sharing the app's school-blue color temperature.
         paper: {
-          DEFAULT: "#FAF5E9",
-          dark: "#F0E6D2",
+          DEFAULT: "#f4f8fb",
+          dark: "#eaf1f6",
         },
       },
       fontFamily: {
@@ -74,7 +78,7 @@ export default {
       },
       boxShadow: {
         card: "0 1px 2px 0 rgba(16, 30, 49, 0.06), 0 1px 3px 0 rgba(16, 30, 49, 0.08)",
-        glow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 60px -15px rgba(108, 92, 231, 0.45)",
+        glow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 60px -15px rgba(40, 127, 180, 0.32)",
       },
       keyframes: {
         drift: {

@@ -56,7 +56,7 @@ export default function GallerySection() {
       <ParallaxDecor tone="amber" />
       <div className="mx-auto max-w-site px-6">
         <div className="mb-8 text-center">
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-teal-700">Photo Gallery</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-navy-700">Photo Gallery</p>
           <h2 className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Glimpses of School Life</h2>
           <p className="mx-auto mt-3 max-w-xl text-navy-500">
             {hasSamplePhotos ? "Illustrative preview images across campus and school activities." : "Sports day, annual fest, classrooms and campus - straight from our own students."}

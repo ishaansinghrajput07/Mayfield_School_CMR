@@ -32,7 +32,7 @@ export default function UpcomingEvents() {
       <ParallaxDecor tone="violet" />
       <div className="relative mx-auto max-w-[1560px]">
         <div ref={headRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Mark Your Calendar</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Mark Your Calendar</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Upcoming Events</h2>
           <p className="mt-3 text-navy-600">Fairs, workshops and celebrations happening on campus this year.</p>
         </div>

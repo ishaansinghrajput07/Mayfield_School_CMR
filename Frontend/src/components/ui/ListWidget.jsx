@@ -24,7 +24,7 @@ export default function ListWidget({ title, icon: Icon, viewAllTo, onViewAll, lo
           <h3 className="font-display text-sm font-semibold text-navy-800">{title}</h3>
         </div>
         {onViewAll && (
-          <button onClick={onViewAll} className="text-xs font-semibold text-teal-600 hover:underline">
+          <button onClick={onViewAll} className="text-xs font-semibold text-navy-600 hover:underline">
             View all
           </button>
         )}

@@ -19,7 +19,7 @@ export default function AchievementWall() {
       <ParallaxDecor tone="amber" />
       <div className="relative mx-auto max-w-[1560px]">
         <div ref={headRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-teal-700">Wall of Fame</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Wall of Fame</span>
           <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Achievement Wall</h2>
           <p className="mt-3 text-navy-600">A snapshot of the trophies, titles and recognitions our students bring home.</p>
         </div>

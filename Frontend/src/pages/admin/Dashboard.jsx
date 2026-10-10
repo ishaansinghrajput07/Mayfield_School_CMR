@@ -182,11 +182,11 @@ export default function AdminDashboard() {
           <h3 className="mb-4 font-display text-sm font-semibold text-navy-800">Monthly Attendance %</h3>
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={attendanceChart}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#eef2f6" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#4a6f96" }} />
-              <YAxis tick={{ fontSize: 12, fill: "#4a6f96" }} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #eef2f6", fontSize: 13 }} />
-              <Line type="monotone" dataKey="percentage" stroke="#2C7A7B" strokeWidth={2.5} dot={{ r: 3 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5d7b92" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#5d7b92" }} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+              <Line type="monotone" dataKey="percentage" stroke="var(--school-blue)" strokeWidth={2.5} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
         </motion.div>
@@ -195,13 +195,13 @@ export default function AdminDashboard() {
           <h3 className="mb-4 font-display text-sm font-semibold text-navy-800">Income vs Expense</h3>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={incomeExpenseChart}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#eef2f6" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#4a6f96" }} />
-              <YAxis tick={{ fontSize: 12, fill: "#4a6f96" }} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #eef2f6", fontSize: 13 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5d7b92" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#5d7b92" }} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
               <Legend />
-              <Bar dataKey="income" fill="#2C7A7B" radius={[6, 6, 0, 0]} />
-              <Bar dataKey="expense" fill="#E8A33D" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="income" fill="var(--school-blue)" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="expense" fill="var(--school-red)" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </motion.div>
@@ -212,15 +212,15 @@ export default function AdminDashboard() {
             <AreaChart data={studentGrowthChart}>
               <defs>
                 <linearGradient id="growthFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#6C5CE7" stopOpacity={0.35} />
-                  <stop offset="100%" stopColor="#6C5CE7" stopOpacity={0} />
+                  <stop offset="0%" stopColor="var(--school-blue)" stopOpacity={0.35} />
+                  <stop offset="100%" stopColor="var(--school-blue)" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#eef2f6" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#4a6f96" }} />
-              <YAxis tick={{ fontSize: 12, fill: "#4a6f96" }} allowDecimals={false} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #eef2f6", fontSize: 13 }} />
-              <Area type="monotone" dataKey="admissions" stroke="#6C5CE7" strokeWidth={2.5} fill="url(#growthFill)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5d7b92" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#5d7b92" }} allowDecimals={false} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+              <Area type="monotone" dataKey="admissions" stroke="var(--school-blue)" strokeWidth={2.5} fill="url(#growthFill)" />
             </AreaChart>
           </ResponsiveContainer>
         </motion.div>
@@ -230,11 +230,11 @@ export default function AdminDashboard() {
             <h3 className="mb-4 font-display text-sm font-semibold text-navy-800">Branch-wise Attendance %</h3>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={data.charts.branchAttendance}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#eef2f6" />
-                <XAxis dataKey="branch" tick={{ fontSize: 12, fill: "#4a6f96" }} />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: "#4a6f96" }} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #eef2f6", fontSize: 13 }} />
-                <Bar dataKey="percentage" fill="#6C5CE7" radius={[6, 6, 0, 0]} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
+                <XAxis dataKey="branch" tick={{ fontSize: 12, fill: "#5d7b92" }} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: "#5d7b92" }} />
+                <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+                <Bar dataKey="percentage" fill="var(--school-blue)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </motion.div>
@@ -252,7 +252,7 @@ export default function AdminDashboard() {
             initial={{ width: 0 }}
             animate={{ width: `${feeCollectionRate}%` }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="h-full rounded-full bg-gradient-to-r from-teal-500 to-teal-600"
+            className="h-full rounded-full bg-gradient-to-r from-navy-500 to-navy-700"
           />
         </div>
         <div className="mt-2 flex justify-between text-xs text-navy-400">
