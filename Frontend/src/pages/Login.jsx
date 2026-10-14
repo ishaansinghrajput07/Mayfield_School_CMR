@@ -1,3 +1,4 @@
+import Logo from "../components/brand/Logo";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -48,11 +49,9 @@ export default function Login() {
         >
           {/* Mobile-only logo (hero is hidden below lg) */}
           <div className="mb-8 flex flex-col items-center text-center lg:hidden">
-            <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-navy-900 text-white shadow-md shadow-navy-900/20">
-              <GraduationCap size={22} />
-            </div>
-            <h1 className="font-display text-lg font-bold text-navy-900">St. Thomas Convent Hr. Sec. School</h1>
-            <p className="mt-1 text-sm text-navy-500">Indore · Sign in to your school portal</p>
+            <Logo size={64} className="mb-3" />
+            <h1 className="font-display text-lg font-bold text-navy-900">Mayfield Global School</h1>
+            <p className="mt-1 text-sm text-navy-500">Patna · Sign in to your school portal</p>
           </div>
 
           <div className="rounded-2xl border border-navy-100 bg-white p-5 shadow-[0_20px_50px_-15px_rgba(16,30,49,0.12)] transition-shadow duration-300 hover:shadow-[0_25px_60px_-15px_rgba(30,58,95,0.16)] sm:p-8">

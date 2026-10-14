@@ -1,4 +1,4 @@
-# St. Thomas Convent Hr. Sec. School — CRM
+# Mayfield Global School, Patna — CRM
 
 A MERN-stack School CRM / management system for handling students, staff, and administrative operations, with authentication, file/image uploads, email notifications, and SMS/OTP verification.
 

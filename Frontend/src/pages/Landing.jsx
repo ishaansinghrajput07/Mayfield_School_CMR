@@ -24,6 +24,7 @@ import UpcomingEvents from "../components/landing/UpcomingEvents";
 import FAQ from "../components/landing/FAQ";
 import Contact from "../components/landing/Contact";
 import Footer from "../components/landing/Footer";
+import LifeAtMayfield from "../components/landing/LifeAtMayfield";
 
 const SECTION_CONTENT = {
   about: [About, StatsStrip],
@@ -47,6 +48,7 @@ const HOME_CONTENT = [
   Hero,
   About,
   StatsStrip,
+  LifeAtMayfield,
   NoticesEvents,
   UpcomingEvents,
 ];

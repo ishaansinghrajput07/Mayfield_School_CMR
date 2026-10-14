@@ -3,15 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --school-blue: #287fb4;
-  --school-blue-dark: #1c5f8d;
-  --school-red: #c6283d;
-  --school-red-dark: #a91f31;
+  --school-blue: #1f3f7a;
+  --school-blue-dark: #122852;
+  --school-red: #1f3f7a;
+  --school-red-dark: #122852;
+  --house-red: #9e1b2a;
+  --house-yellow: #b98a2e;
+  --house-green: #2f6b57;
+  --house-blue: #2a4f94;
+  --house-stripe: linear-gradient(90deg, #0b1b3c 0 55%, var(--house-yellow) 55% 100%);
 }
 
 @layer base {
   body {
     @apply bg-surface font-body text-navy-800;
+  }
+
+  /* Alegreya defaults to old-style figures; fees, dates and marks need lining. */
+  .font-serif,
+  .font-display {
+    font-variant-numeric: lining-nums;
   }
 
   html {
@@ -23,7 +34,7 @@
        Gallery, Parents Say, Contact...) scrolls the target section's
        heading right underneath the fixed bar, hiding it. 96px = navbar
        height + a little breathing room above the heading. */
-    scroll-padding-top: 96px;
+    scroll-padding-top: 88px;
   }
   :focus-visible {
     outline: 2px solid theme("colors.school.blue");
@@ -33,7 +44,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-navy-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-px hover:bg-navy-600 hover:shadow-md focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-navy-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-px hover:bg-navy-900 hover:shadow-md focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0;
   }
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-navy-100 bg-white px-4 py-2.5 text-sm font-semibold text-navy-700 shadow-sm transition-all hover:border-navy-200 hover:bg-navy-50 focus-visible:outline-none;
@@ -162,7 +173,7 @@
     @apply transition-all duration-300 ease-out;
   }
   .btn-glow:hover {
-    @apply -translate-y-0.5 shadow-[0_10px_24px_-10px_rgba(30,58,95,0.35)];
+    @apply -translate-y-0.5 shadow-[0_10px_24px_-10px_rgba(13,26,53,0.35)];
   }
 }
 
@@ -286,12 +297,12 @@
 }
 
 .landing-section-page {
-  padding-top: 4.75rem;
+  padding-top: 4.5rem;
 }
 
 .landing-section-page > section:not(#top) {
   padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1rem, 4vw, 3rem);
-  border-bottom: 1px solid rgba(20, 54, 79, 0.08);
+  border-bottom: 1px solid rgba(11, 27, 60, 0.08);
   scroll-margin-top: 5rem;
 }
 
@@ -317,13 +328,13 @@
   letter-spacing: -0.025em;
 }
 
-.landing-section-page > section:not(#top) h2::after {
+.landing-section-page > section:not(#top) .text-center > h2::after {
   display: block;
-  width: 2.75rem;
-  height: 0.2rem;
+  width: 3.5rem;
+  height: 0.25rem;
   margin: 0.9rem auto 0;
   border-radius: 999px;
-  background: var(--school-red);
+  background: var(--house-stripe);
   content: "";
 }
 
@@ -358,7 +369,7 @@
 
 @media (max-width: 640px) {
   .landing-section-page {
-    padding-top: 4.5rem;
+    padding-top: 4.25rem;
   }
 
   .landing-section-page > section:not(#top) {
@@ -370,7 +381,7 @@
     padding-top: 1.25rem;
   }
 
-  .landing-section-page > section:not(#top) h2::after {
+  .landing-section-page > section:not(#top) .text-center > h2::after {
     margin-top: 0.7rem;
   }
 }
@@ -467,11 +478,42 @@
   html {
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
-    scroll-padding-top: 96px;
+    scroll-padding-top: 88px;
   }
   :focus-visible {
     outline: 2px solid #2C7A7B;
     outline-offset: 2px;
   }
 }
+}
+
+/* Small tracked eyebrow labels read as boilerplate: in the public site they
+   are set as plain sentence-case red text instead. */
+.font-body section span[class*="tracking-widest"] {
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 0.875rem;
+  color: var(--school-red);
+}
+
+/* Signature house-colour stripe (red, yellow, green, blue) taken from the
+   student polos in the school photos. */
+.house-stripe {
+  display: block;
+  height: 4px;
+  background: var(--house-stripe);
+}
+
+/* Hero photo reveal: the one orchestrated page-load moment. */
+@keyframes hero-photo-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.hero-photo {
+  opacity: 0;
+  animation: hero-photo-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--hero-delay, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo { opacity: 1; animation: none; }
 }

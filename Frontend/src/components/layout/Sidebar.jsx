@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { GraduationCap, ChevronsLeft, X } from "lucide-react";
+import { ChevronsLeft, X } from "lucide-react";
+import Logo from "../brand/Logo";
+import { SCHOOL } from "../../config/school";
 import { NAV_LINKS_BY_ROLE } from "./navLinks";
 
 function NavLinks({ links, collapsed }) {
@@ -50,14 +52,11 @@ function NavLinks({ links, collapsed }) {
 function Brand({ collapsed }) {
   return (
     <div className={`flex items-center gap-3 border-b border-navy-100/80 px-5 py-5 ${collapsed ? "justify-center px-3" : ""}`}>
-      <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-navy-500 text-white shadow-sm">
-        <GraduationCap size={20} />
-        <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full border-2 border-white bg-amber-500" />
-      </div>
+      <Logo size={42} />
       {!collapsed && (
         <div className="min-w-0">
-          <p className="truncate font-display text-[13px] font-bold leading-tight text-navy-900">St. Thomas Convent</p>
-          <p className="mt-1 truncate text-[11px] text-navy-400">Hr. Sec. School · Indore</p>
+          <p className="truncate font-display text-[13px] font-bold leading-tight text-navy-900">Mayfield Global School</p>
+          <p className="mt-1 truncate text-[11px] text-navy-400">CBSE · Neora, Patna</p>
         </div>
       )}
     </div>

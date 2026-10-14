@@ -208,7 +208,7 @@ const bulkSaveMarks = asyncHandler(async (req, res) => {
   const uniquePhones = [...new Set(students.map((s) => s.parent?.phone).filter(Boolean))];
   Promise.allSettled(
     uniquePhones.map((phone) =>
-      sendSms({ to: phone, body: `St. Thomas Convent: New ${semester} marks published for ${subjectDoc.name}. Check the student portal for details.` })
+      sendSms({ to: phone, body: `Mayfield Global School: New ${semester} marks published for ${subjectDoc.name}. Check the student portal for details.` })
     )
   ).then((results) => {
     const failed = results.filter((r) => r.status === "rejected").length;

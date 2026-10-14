@@ -313,13 +313,13 @@ const forgotPassword = asyncHandler(async (req, res) => {
   try {
     const info = await sendEmail({
       to: user.email,
-      subject: "Password Reset - St. Thomas Convent Hr. Sec. School Indore",
+      subject: "Password Reset - Mayfield Global School, Patna",
       html: `
         <p>Dear ${user.name},</p>
         <p>We received a request to reset your School ERP password. This link expires in 30 minutes:</p>
         <p><a href="${resetUrl}">${resetUrl}</a></p>
         <p>If you did not request this, you can safely ignore this email - your password will remain unchanged.</p>
-        <p>Thank you,<br/>St. Thomas Convent Hr. Sec. School Indore</p>
+        <p>Thank you,<br/>Mayfield Global School, Patna</p>
       `,
     });
 

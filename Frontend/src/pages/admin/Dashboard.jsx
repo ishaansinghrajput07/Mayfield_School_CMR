@@ -182,10 +182,10 @@ export default function AdminDashboard() {
           <h3 className="mb-4 font-display text-sm font-semibold text-navy-800">Monthly Attendance %</h3>
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={attendanceChart}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5d7b92" }} />
-              <YAxis tick={{ fontSize: 12, fill: "#5d7b92" }} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#dbe3f1" />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5f759d" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#5f759d" }} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #dbe3f1", fontSize: 13 }} />
               <Line type="monotone" dataKey="percentage" stroke="var(--school-blue)" strokeWidth={2.5} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
@@ -195,10 +195,10 @@ export default function AdminDashboard() {
           <h3 className="mb-4 font-display text-sm font-semibold text-navy-800">Income vs Expense</h3>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={incomeExpenseChart}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5d7b92" }} />
-              <YAxis tick={{ fontSize: 12, fill: "#5d7b92" }} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#dbe3f1" />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5f759d" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#5f759d" }} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #dbe3f1", fontSize: 13 }} />
               <Legend />
               <Bar dataKey="income" fill="var(--school-blue)" radius={[6, 6, 0, 0]} />
               <Bar dataKey="expense" fill="var(--school-red)" radius={[6, 6, 0, 0]} />
@@ -216,10 +216,10 @@ export default function AdminDashboard() {
                   <stop offset="100%" stopColor="var(--school-blue)" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
-              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5d7b92" }} />
-              <YAxis tick={{ fontSize: 12, fill: "#5d7b92" }} allowDecimals={false} />
-              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#dbe3f1" />
+              <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#5f759d" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#5f759d" }} allowDecimals={false} />
+              <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #dbe3f1", fontSize: 13 }} />
               <Area type="monotone" dataKey="admissions" stroke="var(--school-blue)" strokeWidth={2.5} fill="url(#growthFill)" />
             </AreaChart>
           </ResponsiveContainer>
@@ -230,10 +230,10 @@ export default function AdminDashboard() {
             <h3 className="mb-4 font-display text-sm font-semibold text-navy-800">Branch-wise Attendance %</h3>
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={data.charts.branchAttendance}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#d8e8f2" />
-                <XAxis dataKey="branch" tick={{ fontSize: 12, fill: "#5d7b92" }} />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: "#5d7b92" }} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #d8e8f2", fontSize: 13 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#dbe3f1" />
+                <XAxis dataKey="branch" tick={{ fontSize: 12, fill: "#5f759d" }} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: "#5f759d" }} />
+                <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid #dbe3f1", fontSize: 13 }} />
                 <Bar dataKey="percentage" fill="var(--school-blue)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

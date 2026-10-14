@@ -47,7 +47,7 @@ export default function AuthInput({
           className={`peer w-full rounded-xl border bg-navy-50/70 py-3.5 text-sm text-navy-900 outline-none transition-all duration-200 placeholder:text-transparent ${
             Icon ? "pl-11" : "pl-4"
           } ${rightAdornment ? "pr-11" : "pr-4"} ${
-            focused ? "border-navy-500 bg-white shadow-[0_0_0_4px_rgba(40,127,180,0.12)]" : "border-navy-100 hover:border-navy-300"
+            focused ? "border-navy-500 bg-white shadow-[0_0_0_4px_rgba(42,74,130,0.12)]" : "border-navy-100 hover:border-navy-300"
           }`}
           {...rest}
         />

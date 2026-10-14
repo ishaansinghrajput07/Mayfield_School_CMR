@@ -1,74 +1,73 @@
-import { Sparkles, Users, HeartHandshake, Compass } from "lucide-react";
+import { photos } from "../../assets/school";
+import { SCHOOL } from "../../config/school";
 import useReveal from "../../hooks/useReveal";
-import ParallaxDecor from "./ParallaxDecor";
-
-const VALUES = [
-  {
-    icon: Sparkles,
-    title: "Excellence",
-    body: "We hold every student to the highest standard we can help them reach — never a ceiling, always a floor.",
-    tone: "bg-amber-500 text-navy-900 border-amber-500",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Inclusivity",
-    body: "Every child who walks through our gates is welcomed exactly as they are, from every background.",
-    tone: "bg-coral-500 text-white border-coral-500",
-  },
-  {
-    icon: Compass,
-    title: "Innovation",
-    body: "Modern teaching methods and smart classrooms sit alongside — not instead of — real classroom attention.",
-    tone: "bg-navy-500 text-white border-navy-500",
-  },
-  {
-    icon: Users,
-    title: "Values",
-    body: "Character and Indian cultural values are woven through the school day, not confined to one period a week.",
-    tone: "bg-violet-500 text-white border-violet-500",
-  },
-];
+import SectionHeading from "./SectionHeading";
 
 export default function About() {
-  const introRef = useReveal();
+  const textRef = useReveal();
+  const photoRef = useReveal(120);
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white px-6 py-24">
-      <ParallaxDecor tone="amber" />
-      <div className="relative z-10 mx-auto max-w-[1560px]">
-        <div ref={introRef} className="reveal mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">About Our School</span>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
-            Shaping tomorrow's leaders, today
-          </h2>
-          <p className="mt-4 text-navy-600">
-            Established in 2010, St. Thomas Convent Hr. Sec. School has been a beacon of quality
-            education in Indore. Built on the CBSE curriculum, we provide comprehensive
-            education from Nursery to Class XII — blending academic rigour with holistic
-            development. Our faculty of 80+ experienced teachers ensures personal attention
-            for every child.
-          </p>
+    <section id="about" className="bg-white">
+      <div className="mx-auto grid max-w-site items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+        <div ref={textRef} className="reveal min-w-0">
+          <SectionHeading title="A Patna school built around one idea">
+            Our crest shows two children holding hands over an open book, with the sun rising behind them.
+            It carries the school's motto: {SCHOOL.motto}.
+          </SectionHeading>
+
+          <div className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-navy-600">
+            <p>
+              {SCHOOL.name} is a co-educational school affiliated to the Central Board of Secondary Education.
+              It opened in {SCHOOL.established} at Neora Ganjpar, on Sarai Neoraganj Road in Patna, and teaches
+              children from Nursery through Senior Secondary (Class XII).
+            </p>
+            <p>
+              The school is managed by the {SCHOOL.trust} and led by its principal, {SCHOOL.principal}.
+              Students take part in morning assembly, national-day programmes, sports day, science practicals
+              and the annual function. Take a look at the photographs on this site to see a school day for yourself.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {VALUES.map((v, i) => (
-            <ValueCard key={v.title} {...v} delay={i * 90} />
-          ))}
+        <div ref={photoRef} className="reveal relative min-w-0 pb-10 sm:pb-0">
+          <img
+            src={photos.campusBuilding}
+            alt="The Mayfield Global School academic building at Neora, Patna"
+            loading="lazy"
+            className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card"
+          />
+          <figure className="absolute -bottom-2 left-4 flex items-center gap-3 rounded-xl bg-white p-2.5 pr-5 shadow-[0_16px_40px_-14px_rgba(13,26,53,0.5)] ring-1 ring-navy-100 sm:-bottom-8 sm:-left-6">
+            <img
+              src={photos.principalPortrait}
+              alt={`${SCHOOL.principal}, Principal`}
+              loading="lazy"
+              className="h-20 w-16 rounded-lg object-cover object-top sm:h-24 sm:w-20"
+            />
+            <figcaption>
+              <span className="block font-serif text-lg font-bold leading-tight text-navy-900">{SCHOOL.principal}</span>
+              <span className="mt-0.5 block text-sm text-navy-500">Principal</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-20 max-w-site">
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-14">
+          <div>
+            <h3 className="font-serif text-2xl font-bold text-navy-900 sm:text-3xl">The people behind the school</h3>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-navy-600">
+              Our teachers and staff, photographed together outside the school building in Patna.
+            </p>
+          </div>
+          <img
+            src={photos.staffGroup}
+            alt="Teachers and staff of Mayfield Global School standing together outdoors"
+            loading="lazy"
+            className="aspect-[16/9] w-full rounded-2xl object-cover"
+          />
         </div>
       </div>
     </section>
-  );
-}
-
-function ValueCard({ icon: Icon, title, body, tone, delay }) {
-  const ref = useReveal(delay);
-  return (
-    <div ref={ref} className="reveal premium-card rounded-2xl border border-navy-900/15 bg-paper-dark p-6">
-      <span className={`premium-icon flex h-11 w-11 items-center justify-center rounded-full border-2 ${tone}`}>
-        <Icon size={18} />
-      </span>
-      <h3 className="mt-4 font-serif text-base font-semibold text-navy-900">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-navy-600">{body}</p>
-    </div>
   );
 }

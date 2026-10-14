@@ -10,7 +10,7 @@ export default function AuthSelect({ id, label, value, onChange, children, icon:
           id={id}
           value={value}
           onChange={onChange}
-          className={`w-full appearance-none rounded-xl border border-navy-100 bg-navy-50/70 py-3.5 pr-9 text-sm text-navy-900 outline-none transition-all duration-200 hover:border-navy-300 focus:border-navy-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(40,127,180,0.12)] ${
+          className={`w-full appearance-none rounded-xl border border-navy-100 bg-navy-50/70 py-3.5 pr-9 text-sm text-navy-900 outline-none transition-all duration-200 hover:border-navy-300 focus:border-navy-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(42,74,130,0.12)] ${
             Icon ? "pl-11" : "pl-4"
           }`}
         >

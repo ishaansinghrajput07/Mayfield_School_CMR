@@ -167,7 +167,7 @@ export default function AdmissionsFees() {
                 <div className="relative min-h-64 overflow-hidden rounded-xl border border-navy-100 bg-paper shadow-sm lg:h-full">
                   <img
                     src={resolveFileUrl(sidePhoto.imageUrl)}
-                    alt={`${selectedClassName} sample photo at St. Thomas Convent`}
+                    alt={`${selectedClassName} sample photo at Mayfield Global School`}
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                   {(sidePhoto.caption || selectedClassName) && (

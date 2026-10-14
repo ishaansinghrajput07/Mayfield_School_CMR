@@ -72,7 +72,7 @@ const createNotice = asyncHandler(async (req, res) => {
 
   const dateStr = notice.eventDate ? new Date(notice.eventDate).toLocaleDateString() : null;
   const audienceLabel = notice.category === "holiday" ? "Holiday notice" : "Notice";
-  const smsBody = `St. Thomas Convent Hr. Sec. School: ${audienceLabel} - "${notice.title}"${dateStr ? ` on ${dateStr}` : ""}.`;
+  const smsBody = `Mayfield Global School: ${audienceLabel} - "${notice.title}"${dateStr ? ` on ${dateStr}` : ""}.`;
 
   // Build the recipient set of student *user* ids based on audience + optional
   // class targeting, so a class-specific notice only reaches that class.

@@ -45,7 +45,7 @@ export default function Topbar({ title, onMenuClick }) {
   };
 
   return (
-    <header className="sticky top-0 z-30 flex min-h-16 items-center justify-between gap-3 border-b border-navy-100/80 border-t-2 border-t-school-blue bg-white/95 px-4 py-2.5 backdrop-blur-md sm:gap-4 sm:px-6 print:hidden">
+    <header className="sticky top-0 z-30 flex min-h-16 items-center justify-between gap-3 border-b border-navy-100/80 border-t-2 border-t-school-red bg-white/95 px-4 py-2.5 backdrop-blur-md sm:gap-4 sm:px-6 print:hidden">
       <div className="flex min-w-0 items-center gap-3">
         <button
           onClick={onMenuClick}

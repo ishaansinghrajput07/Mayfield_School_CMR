@@ -1,3 +1,5 @@
+import Logo from "../brand/Logo";
+import { SCHOOL } from "../../config/school";
 import { GraduationCap, IdCard as IdCardIcon, FileText, Phone, Mail, MapPin, ShieldAlert } from "lucide-react";
 
 // Full student profile, styled as photo panel + information tables.
@@ -25,11 +27,9 @@ export default function IdCardVisual({ student }) {
     <div className="mx-auto max-w-4xl">
       {/* School masthead - printed on every ID card / profile view */}
       <div className="mb-4 flex items-center gap-3 border-b border-navy-100 pb-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-navy-500 to-violet-600 text-white shadow-sm">
-          <GraduationCap size={22} />
-        </div>
+        <Logo size={46} />
         <div>
-          <p className="font-display text-lg font-bold text-navy-900">St. Thomas Convent Hr. Sec. School</p>
+          <p className="font-display text-lg font-bold text-navy-900">{SCHOOL.name}</p>
           <p className="text-xs text-navy-400">Student Identity Card & Profile</p>
         </div>
       </div>

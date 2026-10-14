@@ -1,3 +1,4 @@
+import Logo from "../components/brand/Logo";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -146,9 +147,7 @@ export default function Signup() {
         >
           {/* Mobile-only logo */}
           <div className="mb-6 flex flex-col items-center text-center lg:hidden">
-            <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-navy-900 text-white shadow-md shadow-navy-900/20">
-              <GraduationCap size={22} />
-            </div>
+            <Logo size={64} className="mb-3" />
             <h1 className="font-display text-lg font-bold text-navy-900">Create your student account</h1>
             <p className="mt-1 text-sm text-navy-500">Your digital ID card is generated automatically</p>
           </div>

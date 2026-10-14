@@ -1,10 +1,12 @@
-import { GraduationCap, Phone, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
+import Logo from "../brand/Logo";
+import { SCHOOL } from "../../config/school";
 
 // Short, wallet/print-card sized ID card - the physical-card equivalent of
 // IdCardVisual (which is the full profile view). Deliberately only carries
 // the fields that belong on a real ID card: photo, name, class & section,
 // academic year, address and mobile number.
-export default function IdCardCompact({ student, schoolName = "St. Thomas Convent Hr. Sec. School" }) {
+export default function IdCardCompact({ student, schoolName = SCHOOL.name }) {
   if (!student) return null;
 
   const fullName = `${student.firstName} ${student.lastName || ""}`.trim();
@@ -14,7 +16,7 @@ export default function IdCardCompact({ student, schoolName = "St. Thomas Conven
     <div className="mx-auto w-full max-w-[380px] overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-card print:shadow-none">
       {/* Masthead */}
       <div className="flex items-center gap-2 bg-gradient-to-r from-navy-800 to-navy-600 px-4 py-3 text-white">
-        <GraduationCap size={20} />
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white"><Logo size={30} /></span>
         <div className="min-w-0">
           <p className="truncate font-display text-xs font-bold leading-tight">{schoolName}</p>
           <p className="text-[10px] text-white/70">Student Identity Card</p>

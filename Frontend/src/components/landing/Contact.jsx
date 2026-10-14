@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Mail, MapPin, Phone, Clock, Facebook, Instagram, Youtube, QrCode } from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Instagram, Youtube } from "lucide-react";
 import toast from "react-hot-toast";
 import useReveal from "../../hooks/useReveal";
-import ParallaxDecor from "./ParallaxDecor";
-import schoolBuildingPhoto from "../../assets/hero/hero1.webp";
+import SectionHeading from "./SectionHeading";
+import { photos } from "../../assets/school";
+import { SCHOOL, fullAddress } from "../../config/school";
 import { contactInquiriesApi } from "../../api/endpoints";
 
 export default function Contact() {
@@ -30,113 +31,114 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-paper px-6 py-24">
-      <ParallaxDecor tone="navy" />
-      <div ref={ref} className="reveal mx-auto max-w-[1560px]">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">Get in Touch</span>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">We'd love to meet you</h2>
-          <p className="mt-4 text-navy-600">
-            Have a question about admissions, fees, or a school visit? Reach out and our office
-            will get back to you within one business day.
-          </p>
-        </div>
+    <section id="contact" className="bg-paper">
+      <div ref={ref} className="reveal mx-auto max-w-site">
+        <SectionHeading title="Contact the school">
+          Questions about admissions, fees or a visit? Call the office or send us a message.
+        </SectionHeading>
 
-        {/* Three-column layout: contact details, the form, and a map/social
-            column - so the wide desktop canvas is used instead of leaving
-            empty space beside a lone map. */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-3 lg:items-start">
-          {/* Column 1 - contact info */}
-          <div className="rounded-2xl border-2 border-navy-900/10 bg-white p-6 shadow-card">
-            <p className="font-serif text-lg font-semibold text-navy-900">Contact Information</p>
-            <div className="mt-5 space-y-4">
-              <ContactRow icon={Mail} label="admissions@stthomasconvent.edu.in" />
-              <ContactRow icon={Phone} label="+91 98765 43210" />
-              <ContactRow icon={MapPin} label="St. Thomas Convent Hr. Sec. School, Indore" />
-              <ContactRow icon={Clock} label="8:00 AM – 3:00 PM, Mon–Sat" />
-            </div>
-            <div className="mt-6 border-t border-dashed border-navy-100 pt-5">
-              <p className="text-xs font-semibold uppercase tracking-wide text-navy-400">Office Hours</p>
-              <p className="mt-2 text-sm text-navy-600">Monday – Saturday, 8:00 AM to 3:00 PM</p>
-              <p className="mt-1 text-sm text-navy-600">Sunday: Closed</p>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1fr_0.9fr] lg:items-start">
+          {/* Column 1 - contact details */}
+          <div className="rounded-2xl border border-navy-100 bg-white p-6">
+            <h3 className="font-serif text-xl font-bold text-navy-900">Office contacts</h3>
+            <div className="mt-5 space-y-5">
+              <ContactRow icon={Phone} title="Phone">
+                {SCHOOL.phones.map((p) => (
+                  <a key={p.tel} href={`tel:${p.tel}`} className="block hover:text-school-red">
+                    {p.display}
+                  </a>
+                ))}
+              </ContactRow>
+              <ContactRow icon={Mail} title="Email">
+                {SCHOOL.emails.map((e) => (
+                  <a key={e} href={`mailto:${e}`} className="block break-all hover:text-school-red">
+                    {e}
+                  </a>
+                ))}
+              </ContactRow>
+              <ContactRow icon={MapPin} title="Campus address">
+                <span className="block">{fullAddress}</span>
+              </ContactRow>
             </div>
           </div>
 
           {/* Column 2 - contact form */}
-          <div className="flex flex-col rounded-2xl border-2 border-navy-900/10 bg-white p-6 shadow-card">
+          <div className="flex flex-col rounded-2xl border border-navy-100 bg-white p-6">
             {sent ? (
               <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
-                <p className="font-serif text-lg font-semibold text-navy-900">Message sent</p>
-                <p className="mt-1 text-sm text-navy-500">Our office will reach out within one business day.</p>
-                <button type="button" onClick={() => setSent(false)} className="mt-4 text-sm font-semibold text-navy-700 hover:text-navy-900">
+                <p className="font-serif text-xl font-bold text-navy-900">Message sent</p>
+                <p className="mt-1 text-base text-navy-500">The school office will get back to you.</p>
+                <button type="button" onClick={() => setSent(false)} className="mt-4 text-base font-semibold text-school-red hover:text-school-red-dark">
                   Send another message
                 </button>
               </div>
             ) : (
               <form onSubmit={submit} className="grid gap-4">
                 <div>
-                  <label className="label">Parent's name</label>
-                  <input required name="name" maxLength={100} value={form.name} onChange={updateForm} className="input" placeholder="Your name" />
+                  <label className="label" htmlFor="contact-name">Parent's name</label>
+                  <input id="contact-name" required name="name" maxLength={100} value={form.name} onChange={updateForm} className="input" placeholder="Your name" />
                 </div>
                 <div>
-                  <label className="label">Phone number</label>
-                  <input required name="phone" type="tel" maxLength={30} value={form.phone} onChange={updateForm} className="input" placeholder="Your phone number" />
+                  <label className="label" htmlFor="contact-phone">Phone number</label>
+                  <input id="contact-phone" required name="phone" type="tel" maxLength={30} value={form.phone} onChange={updateForm} className="input" placeholder="Your phone number" />
                 </div>
                 <div>
-                  <label className="label">Email</label>
-                  <input required name="email" type="email" maxLength={254} value={form.email} onChange={updateForm} className="input" placeholder="you@example.com" />
+                  <label className="label" htmlFor="contact-email">Email</label>
+                  <input id="contact-email" required name="email" type="email" maxLength={254} value={form.email} onChange={updateForm} className="input" placeholder="you@example.com" />
                 </div>
                 <div>
-                  <label className="label">Message</label>
-                  <textarea required name="message" rows={4} maxLength={2000} value={form.message} onChange={updateForm} className="input" placeholder="Tell us how we can help..." />
+                  <label className="label" htmlFor="contact-message">Message</label>
+                  <textarea id="contact-message" required name="message" rows={4} maxLength={2000} value={form.message} onChange={updateForm} className="input" placeholder="Tell us how we can help" />
                 </div>
-                <button type="submit" disabled={sending} className="btn-primary !bg-navy-900 hover:!bg-navy-800 disabled:cursor-not-allowed disabled:opacity-60">
-                  {sending ? "Sending..." : "Send Message"}
+                <button type="submit" disabled={sending} className="btn-primary disabled:cursor-not-allowed disabled:opacity-60">
+                  {sending ? "Sending..." : "Send message"}
                 </button>
               </form>
             )}
           </div>
 
-          {/* Column 3 - map, campus photo, QR code, social */}
+          {/* Column 3 - map, campus, social */}
           <div className="flex flex-col gap-5">
-            <div className="overflow-hidden rounded-2xl border-2 border-navy-900/10 shadow-card">
+            <div className="overflow-hidden rounded-2xl border border-navy-100">
               <iframe
-                title="School location"
-                src="https://maps.google.com/maps?q=St+Thomas+Convent+School+Indore&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                className="block h-[180px] w-full"
+                title="Mayfield Global School location"
+                src={SCHOOL.mapEmbed}
+                className="block h-[200px] w-full"
                 style={{ border: 0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
 
-            <div className="flex items-center gap-4 rounded-2xl border-2 border-navy-900/10 bg-white p-4 shadow-card">
-              <img src={schoolBuildingPhoto} alt="Campus" className="h-16 w-16 shrink-0 rounded-xl object-cover" />
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-navy-900">Visit our campus</p>
-                <p className="text-xs text-navy-500">Book a guided tour any weekday.</p>
+            <div className="flex items-center gap-4 rounded-2xl border border-navy-100 bg-white p-4">
+              <img src={photos.campusBuilding} alt="The school building" className="h-16 w-20 shrink-0 rounded-lg object-cover" />
+              <div className="min-w-0">
+                <p className="text-base font-bold text-navy-900">Neora Ganjpar, Patna</p>
+                <p className="text-sm text-navy-500">Sarai Neoraganj Road, {SCHOOL.address.pin}</p>
               </div>
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-navy-900/10 bg-paper text-navy-700">
-                <QrCode size={20} />
-              </span>
             </div>
 
-            <div className="rounded-2xl border-2 border-navy-900/10 bg-white p-5 shadow-card">
-              <p className="text-xs font-semibold uppercase tracking-wide text-navy-400">Follow Us</p>
+            <div className="rounded-2xl border border-navy-100 bg-white p-5">
+              <p className="text-base font-bold text-navy-900">Follow us</p>
               <div className="mt-3 flex items-center gap-3">
-                {[Facebook, Instagram, Youtube].map((Icon, i) => (
+                {[
+                  { Icon: Facebook, href: SCHOOL.social.facebook, label: "Facebook" },
+                  { Icon: Instagram, href: SCHOOL.social.instagram, label: "Instagram" },
+                  { Icon: Youtube, href: SCHOOL.social.youtube, label: "YouTube" },
+                ].map(({ Icon, href, label }) => (
                   <a
-                    key={i}
-                    href="/"
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-navy-100 text-navy-500 transition-colors hover:border-navy-900 hover:text-navy-900"
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${SCHOOL.name} on ${label}`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-navy-100 text-navy-600 transition-colors hover:border-school-red hover:text-school-red"
                   >
-                    <Icon size={15} />
+                    <Icon size={17} />
                   </a>
                 ))}
               </div>
-              <a href="tel:+919876543210" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-800 hover:text-navy-700">
-                <Phone size={14} /> Call the office
-              </a>
+              <p className="mt-3 text-sm text-navy-500">Instagram: {SCHOOL.social.instagramHandles.join(" or ")}</p>
             </div>
           </div>
         </div>
@@ -145,13 +147,16 @@ export default function Contact() {
   );
 }
 
-function ContactRow({ icon: Icon, label }) {
+function ContactRow({ icon: Icon, title, children }) {
   return (
-    <div className="flex items-center gap-3">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-navy-900 bg-white text-navy-900">
-        <Icon size={16} />
+    <div className="flex items-start gap-3">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-50 text-school-red">
+        <Icon size={17} />
       </span>
-      <span className="text-sm font-medium text-navy-700">{label}</span>
+      <div className="min-w-0">
+        <p className="text-sm text-navy-500">{title}</p>
+        <div className="mt-0.5 text-base font-semibold leading-snug text-navy-800">{children}</div>
+      </div>
     </div>
   );
 }

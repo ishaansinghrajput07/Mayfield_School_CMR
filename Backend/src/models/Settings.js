@@ -5,17 +5,17 @@ const mongoose = require("mongoose");
 const settingsSchema = new mongoose.Schema(
   {
     key: { type: String, default: "school", unique: true },
-    schoolName: { type: String, default: "St. Thomas Convent Hr. Sec. School Indore" },
-    tagline: { type: String, default: "Excellence in Education" },
+    schoolName: { type: String, default: "Mayfield Global School" },
+    tagline: { type: String, default: "Knowledge is Power" },
     schoolStartTime: { type: String, default: "08:00" },
     schoolEndTime: { type: String, default: "14:00" },
     workingDays: {
       type: [String],
       default: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     },
-    address: { type: String, default: "Indore, Madhya Pradesh" },
-    contactPhone: { type: String, default: "" },
-    contactEmail: { type: String, default: "" },
+    address: { type: String, default: "Neora Ganjpar, Sarai Neoraganj Road, Patna, Bihar 801113" },
+    contactPhone: { type: String, default: "+91 94725 97721" },
+    contactEmail: { type: String, default: "mayfieldglobalschoolpatna@gmail.com" },
   },
   { timestamps: true }
 );

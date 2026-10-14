@@ -1,28 +1,31 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import useReveal from "../../hooks/useReveal";
-import ParallaxDecor from "./ParallaxDecor";
+import SectionHeading from "./SectionHeading";
+import { SCHOOL, fullAddress } from "../../config/school";
 
+// Answers stick to what the school has published. Anything that depends on
+// the current year (fees, seats, dates, documents) is routed to the office.
 const FAQS = [
   {
-    q: "What is the admission process?",
-    a: "Fill out the online inquiry form or visit the school office, submit the required documents, attend a brief interaction (for Class I and above), and receive confirmation within a week. Our admissions team will guide you through each step.",
+    q: "Which classes does the school teach?",
+    a: `${SCHOOL.name} teaches ${SCHOOL.classes} (Senior Secondary), following the ${SCHOOL.board} curriculum. The school is co-educational.`,
   },
   {
-    q: "What documents are required for admission?",
-    a: "Birth certificate, previous school's transfer certificate and report card (if applicable), address proof, and passport-size photographs of the student and parents.",
+    q: "How do I apply for admission?",
+    a: `Use the Apply Now form on this site, or call the school office on ${SCHOOL.phones[0].display}. The office will tell you which class has seats and what to bring.`,
   },
   {
-    q: "Is transport facility available?",
-    a: "Yes — GPS-enabled buses cover all major routes across the city with trained drivers and attendants. Routes and stops can be confirmed with the transport office.",
+    q: "Which documents and fees should I prepare?",
+    a: "Documents and fees depend on the class and on whether your child is joining from another school. Please check with the school office before you visit so that you carry the right papers.",
   },
   {
-    q: "What is the medium of instruction?",
-    a: "English is the medium of instruction across all classes, with Hindi and a third language taught as per the CBSE curriculum.",
+    q: "Where is the school?",
+    a: `${fullAddress}. The campus is on Sarai Neoraganj Road at Neora. You can find directions in the map on the Contact page.`,
   },
   {
-    q: "Are scholarships available?",
-    a: "Yes, merit-based scholarships are available for outstanding students, along with concessions for siblings and specific categories — ask the admissions office for current criteria.",
+    q: "How can I reach the office?",
+    a: `Call ${SCHOOL.phones.map((p) => p.display).join(", ")}, or write to ${SCHOOL.emails.join(" or ")}.`,
   },
 ];
 
@@ -31,27 +34,26 @@ export default function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-white px-6 py-24">
-      <ParallaxDecor tone="amber" />
+    <section id="faq" className="bg-white">
       <div className="mx-auto max-w-3xl">
-        <div ref={headRef} className="reveal text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-navy-700">FAQ</span>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">Admissions, answered</h2>
+        <div ref={headRef} className="reveal">
+          <SectionHeading title="Admissions, answered" />
         </div>
 
-        <div className="mt-12 space-y-3">
+        <div className="mt-10 divide-y divide-navy-100 border-y border-navy-100">
           {FAQS.map((f, i) => (
-            <div key={f.q} className="overflow-hidden rounded-xl border border-navy-900/10">
+            <div key={f.q}>
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                aria-expanded={open === i}
+                className="flex w-full items-center justify-between gap-4 py-5 text-left"
               >
-                <span className="font-serif text-[15px] font-semibold text-navy-900">{f.q}</span>
-                <ChevronDown size={18} className={`shrink-0 text-navy-400 transition-transform ${open === i ? "rotate-180 text-amber-600" : ""}`} />
+                <span className="font-serif text-lg font-bold text-navy-900">{f.q}</span>
+                <ChevronDown size={20} className={`shrink-0 text-navy-400 transition-transform ${open === i ? "rotate-180 text-school-red" : ""}`} />
               </button>
               <div className={`grid transition-all duration-300 ${open === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                 <div className="overflow-hidden">
-                  <p className="px-5 pb-4 text-sm leading-relaxed text-navy-600">{f.a}</p>
+                  <p className="pb-5 text-base leading-relaxed text-navy-600">{f.a}</p>
                 </div>
               </div>
             </div>

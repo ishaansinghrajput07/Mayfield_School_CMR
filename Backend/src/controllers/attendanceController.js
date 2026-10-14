@@ -54,7 +54,7 @@ const markAttendance = asyncHandler(async (req, res) => {
       if (student?.parent?.phone) {
         sendSms({
           to: student.parent.phone,
-          body: `St. Thomas Convent: ${studentName} was marked absent on ${new Date(date).toLocaleDateString()}.${rec.remarks ? ` Reason: ${rec.remarks}.` : ""}`,
+          body: `Mayfield Global School: ${studentName} was marked absent on ${new Date(date).toLocaleDateString()}.${rec.remarks ? ` Reason: ${rec.remarks}.` : ""}`,
         }).catch((err) => console.error("Absence SMS failed:", err.message));
       }
 

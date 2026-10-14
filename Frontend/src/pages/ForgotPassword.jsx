@@ -1,3 +1,4 @@
+import Logo from "../components/brand/Logo";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GraduationCap, Mail, ArrowLeft } from "lucide-react";
@@ -26,11 +27,9 @@ export default function ForgotPassword() {
     <div className="flex min-h-screen items-center justify-center bg-navy-900 px-4 py-5 sm:py-8">
       <div className="w-full max-w-sm">
         <div className="mb-6 flex flex-col items-center text-center">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy-500 text-white">
-            <GraduationCap size={26} />
-          </div>
+          <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white"><Logo size={52} /></span>
           <h1 className="font-display text-xl font-bold text-white">Reset your password</h1>
-          <p className="mt-1 text-sm text-navy-300">St. Thomas Convent Hr. Sec. School, Indore</p>
+          <p className="mt-1 text-sm text-navy-300">Mayfield Global School, Patna</p>
         </div>
 
         <div className="rounded-xl border border-navy-700 bg-navy-800 p-6">

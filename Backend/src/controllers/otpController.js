@@ -29,7 +29,7 @@ const sendOtp = asyncHandler(async (req, res) => {
 
   await sendSms({
     to: mobile,
-    body: `Your St. Thomas Convent verification code is ${code}. It expires in 5 minutes.`,
+    body: `Your Mayfield Global School verification code is ${code}. It expires in 5 minutes.`,
   });
 
   res.json({ success: true, message: "OTP sent", expiresInSeconds: 300 });

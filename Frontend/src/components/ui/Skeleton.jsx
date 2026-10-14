@@ -1,3 +1,4 @@
+import Logo from "../brand/Logo";
 // Generic shimmer building block - a soft gradient sweep over a placeholder
 // block, used everywhere something is still loading instead of a blank
 // screen or a single spinner. Animation is defined once in index.css.
@@ -77,11 +78,12 @@ export function DashboardSkeleton() {
 export function AppBootLoader() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface">
-      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-navy-500 to-violet-600 shadow-glow">
-        <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+      <div className="relative flex h-20 w-20 items-center justify-center">
+        <div className="absolute inset-0 animate-spin rounded-full border-2 border-navy-100 border-t-school-red" />
+        <Logo size={52} />
       </div>
       <div className="space-y-2 text-center">
-        <p className="font-display text-sm font-semibold text-navy-700">St. Thomas Convent Hr. Sec. School</p>
+        <p className="font-display text-sm font-semibold text-navy-700">Mayfield Global School</p>
         <div className="mx-auto flex gap-1.5">
           <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-navy-400 [animation-delay:-0.3s]" />
           <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-navy-400 [animation-delay:-0.15s]" />

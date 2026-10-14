@@ -18,15 +18,9 @@ import { toppersApi } from "../../api/endpoints";
 import { resolveFileUrl } from "../../api/resolveFileUrl";
 import useCountUpOnView from "../../hooks/useCountUpOnView";
 
-// Headline achievement stats
-const ACHIEVEMENTS = [
-  { icon: TrendingUp, value: "98", suffix: "%", label: "Board Result" },
-  { icon: Award, value: "150", suffix: "+", label: "Distinctions" },
-  { icon: Rocket, value: "25", suffix: "+", label: "Olympiad Winners" },
-  { icon: GraduationCap, value: "12", suffix: "+", label: "IIT Selections" },
-  { icon: Stethoscope, value: "18", suffix: "+", label: "NEET Selections" },
-  { icon: MapPin, value: "15", suffix: "+", label: "District Rank Holders" },
-];
+// Headline statistics are intentionally empty: add real, verified figures here
+// (for example board results) before showing a stats row on the public site.
+const ACHIEVEMENTS = [];
 
 function getBadge(topper) {
   const rank = parseInt(topper.rank, 10);
@@ -94,13 +88,13 @@ export default function Toppers() {
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: "radial-gradient(#081b33 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(#0d1a35 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
         aria-hidden="true"
       />
       <div className="pointer-events-none absolute left-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-amber-400/10 blur-[120px]" />
-      <div className="pointer-events-none absolute right-[-5%] top-[40%] h-[600px] w-[600px] rounded-full bg-[#081b33]/5 blur-[120px]" />
+      <div className="pointer-events-none absolute right-[-5%] top-[40%] h-[600px] w-[600px] rounded-full bg-[#0d1a35]/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1400px]">
         
@@ -111,13 +105,13 @@ export default function Toppers() {
           viewport={{ once: true }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="text-sm font-bold uppercase tracking-widest text-amber-500">
+          <span className="text-sm font-bold uppercase tracking-widest text-school-red">
             Academic Excellence
           </span>
-          <h2 className="mt-4 font-serif text-4xl font-bold text-[#081b33] sm:text-5xl">
+          <h2 className="mt-4 font-serif text-4xl font-bold text-[#0d1a35] sm:text-5xl">
             Our Toppers
           </h2>
-          <p className="mt-4 text-lg text-[#081b33]/60">
+          <p className="mt-4 text-lg text-[#0d1a35]/60">
             Celebrating our highest achievers and the dedication that drives them.
           </p>
         </motion.div>
@@ -140,17 +134,17 @@ export default function Toppers() {
         )}
 
         {/* Main Grid */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1.2fr] xl:grid-cols-[1fr_1.5fr] lg:items-stretch">
+        <div className="mt-14 grid gap-8">
           
           {/* Toppers Column */}
           {loading ? (
-            <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-1">
-              {[1, 2].map((i) => (
-                <div key={i} className="h-96 animate-pulse rounded-3xl bg-[#081b33]/5" />
+            <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-96 animate-pulse rounded-3xl bg-[#0d1a35]/5" />
               ))}
             </div>
           ) : (
-            <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <AnimatePresence mode="popLayout">
                 {shownToppers.map((t, i) => (
                   <TopperCard key={t._id} topper={t} delay={i * 0.1} />
@@ -159,8 +153,7 @@ export default function Toppers() {
             </div>
           )}
 
-          {/* Achievement Snapshot Column */}
-          <AchievementPanel />
+          {/* The statistics panel was removed: it showed placeholder figures. */}
 
         </div>
       </div>
@@ -171,7 +164,7 @@ export default function Toppers() {
 /* --- Animated Segmented Control --- */
 function SegmentedControl({ options, value, onChange, compact = false, layoutGroupId }) {
   return (
-    <div className="relative flex items-center rounded-full border border-[#081b33]/5 bg-white p-1.5 shadow-sm">
+    <div className="relative flex items-center rounded-full border border-[#0d1a35]/5 bg-white p-1.5 shadow-sm">
       {options.map((opt) => {
         const isActive = opt === value;
         return (
@@ -180,12 +173,12 @@ function SegmentedControl({ options, value, onChange, compact = false, layoutGro
             onClick={() => onChange(opt)}
             className={`relative rounded-full font-medium transition-colors duration-300 ${
               compact ? "px-4 py-1.5 text-xs" : "px-6 py-2 text-sm"
-            } ${isActive ? "text-white" : "text-[#081b33]/60 hover:text-[#081b33]"}`}
+            } ${isActive ? "text-white" : "text-[#0d1a35]/60 hover:text-[#0d1a35]"}`}
           >
             {isActive && (
               <motion.div
                 layoutId={`active-pill-${layoutGroupId}`}
-                className="absolute inset-0 rounded-full bg-[#081b33] shadow-md"
+                className="absolute inset-0 rounded-full bg-[#0d1a35] shadow-md"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}
@@ -204,11 +197,7 @@ const TopperCard = React.forwardRef(function TopperCard({ topper, delay }, ref) 
   const isSchoolTopper = badge.label === "School Topper";
 
   // Fallback achievements to match your wireframe if the API doesn't provide them yet
-  const achievements = topper.achievements || [
-    { icon: "🥇", text: "District Rank" },
-    { icon: "📚", text: "Olympiad Winner" },
-    { icon: "⭐", text: "Attendance 99%" }
-  ];
+  const achievements = topper.achievements || [];
 
   return (
     <motion.div 
@@ -218,7 +207,7 @@ const TopperCard = React.forwardRef(function TopperCard({ topper, delay }, ref) 
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -8 }}
-      className="group relative flex flex-col items-center overflow-hidden rounded-3xl border border-[#081b33]/10 bg-[#081b33] p-8 text-center shadow-xl transition-shadow hover:shadow-2xl hover:shadow-[#081b33]/20"
+      className="group relative flex flex-col items-center overflow-hidden rounded-3xl border border-[#0d1a35]/10 bg-[#0d1a35] p-8 text-center shadow-xl transition-shadow hover:shadow-2xl hover:shadow-[#0d1a35]/20"
     >
       {/* Subtle background glow inside card */}
       <div className="absolute -top-20 right-0 h-40 w-40 rounded-full bg-amber-400/10 blur-3xl transition-all duration-500 group-hover:bg-amber-400/20" />
@@ -256,7 +245,7 @@ const TopperCard = React.forwardRef(function TopperCard({ topper, delay }, ref) 
 
       {/* Profile Image with Golden Glow */}
       <div className="relative mx-auto mb-4 h-[120px] w-[120px] shrink-0 rounded-full p-1 bg-gradient-to-tr from-amber-400 to-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-transform duration-500 group-hover:scale-105">
-        <div className="h-full w-full overflow-hidden rounded-full border-4 border-[#081b33] bg-[#081b33]">
+        <div className="h-full w-full overflow-hidden rounded-full border-4 border-[#0d1a35] bg-[#0d1a35]">
           {topper.photoUrl ? (
             <img
               src={resolveFileUrl(topper.photoUrl)}
@@ -312,7 +301,7 @@ const TopperCard = React.forwardRef(function TopperCard({ topper, delay }, ref) 
       {/* CTA */}
       <button
         onClick={() => setExpanded(true)}
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 py-3.5 text-sm font-bold text-[#081b33] transition-all hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(251,191,36,0.3)]"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 py-3.5 text-sm font-bold text-[#0d1a35] transition-all hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(251,191,36,0.3)]"
       >
         View Profile
         <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -325,7 +314,7 @@ const TopperCard = React.forwardRef(function TopperCard({ topper, delay }, ref) 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 backdrop-blur-xl bg-[#081b33]/95"
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 backdrop-blur-xl bg-[#0d1a35]/95"
           >
             <button
               onClick={() => setExpanded(false)}
@@ -353,16 +342,16 @@ function AchievementPanel() {
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      className="flex h-full flex-col rounded-3xl border border-[#081b33]/5 bg-white p-8 shadow-xl shadow-[#081b33]/5"
+      className="flex h-full flex-col rounded-3xl border border-[#0d1a35]/5 bg-white p-8 shadow-xl shadow-[#0d1a35]/5"
     >
       <div className="mb-8 border-b border-gray-100 pb-6">
         <span className="text-xs font-bold uppercase tracking-widest text-amber-500">
           This Year
         </span>
-        <h3 className="mt-2 font-serif text-3xl font-bold text-[#081b33]">
+        <h3 className="mt-2 font-serif text-3xl font-bold text-[#0d1a35]">
           Achievement Snapshot
         </h3>
-        <p className="mt-2 text-sm text-[#081b33]/60">
+        <p className="mt-2 text-sm text-[#0d1a35]/60">
           Breaking records and setting new academic benchmarks across all disciplines.
         </p>
       </div>
@@ -373,12 +362,12 @@ function AchievementPanel() {
         ))}
       </div>
       
-      <div className="mt-8 flex items-center gap-3 rounded-2xl bg-[#081b33]/5 p-4 text-sm text-[#081b33]/70">
+      <div className="mt-8 flex items-center gap-3 rounded-2xl bg-[#0d1a35]/5 p-4 text-sm text-[#0d1a35]/70">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600">
           <Gift size={16} />
         </div>
         <p>
-          <strong className="font-semibold text-[#081b33]">100% Scholarships</strong> awarded to every district rank holder.
+          <strong className="font-semibold text-[#0d1a35]">100% Scholarships</strong> awarded to every district rank holder.
         </p>
       </div>
     </motion.div>
@@ -399,16 +388,16 @@ function AchievementStat({ stat, delay }) {
       whileHover={{ y: -4, scale: 1.02 }}
       className="group flex flex-col justify-center rounded-2xl border border-gray-100 bg-[#fbfaf8] p-5 transition-all hover:border-amber-200 hover:bg-white hover:shadow-lg hover:shadow-amber-500/5"
     >
-      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm transition-colors group-hover:bg-amber-50 group-hover:text-amber-600 text-[#081b33]/40">
+      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm transition-colors group-hover:bg-amber-50 group-hover:text-amber-600 text-[#0d1a35]/40">
         <Icon size={20} />
       </div>
       <div className="flex items-baseline gap-0.5">
-        <p ref={ref} className="font-serif text-3xl font-bold text-[#081b33]">
+        <p ref={ref} className="font-serif text-3xl font-bold text-[#0d1a35]">
           {display}
         </p>
         <span className="text-lg font-bold text-amber-500">{suffix}</span>
       </div>
-      <p className="mt-1 text-xs font-medium text-[#081b33]/50 leading-tight">
+      <p className="mt-1 text-xs font-medium text-[#0d1a35]/50 leading-tight">
         {label}
       </p>
     </motion.div>

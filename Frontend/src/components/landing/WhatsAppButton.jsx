@@ -1,7 +1,7 @@
-// Update this to the school's actual WhatsApp number, in international
-// format with no "+", spaces, or leading zeros - e.g. India: 91XXXXXXXXXX.
-const WHATSAPP_NUMBER = "919876543210";
-const DEFAULT_MESSAGE = "Hi! I'd like to know more about admissions at St. Thomas Convent.";
+import { SCHOOL } from "../../config/school";
+
+const WHATSAPP_NUMBER = SCHOOL.whatsapp;
+const DEFAULT_MESSAGE = `Hello! I would like to know more about admissions at ${SCHOOL.name}.`;
 
 export default function WhatsAppButton() {
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;

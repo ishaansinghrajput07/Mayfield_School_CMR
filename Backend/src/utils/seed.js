@@ -128,21 +128,37 @@ const seedPublicContent = async (classes) => {
     console.log(`Created ${syllabusDocs.length} clearly marked sample syllabus records.`);
   }
 
+  // Real photographs supplied by Mayfield Global School (served from /school-gallery).
   const sampleGallery = [
-    { title: "SAMPLE: Campus", category: "campus", imageUrl: "/demo-gallery/campus.webp", caption: "Illustrative sample image - replace with an actual school photo.", featured: true },
-    { title: "SAMPLE: Computer Lab", category: "academics", imageUrl: "/demo-gallery/computer-lab.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: Science Lab", category: "academics", imageUrl: "/demo-gallery/science-lab.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: Classroom", category: "activities", imageUrl: "/demo-gallery/classroom.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: Library", category: "campus", imageUrl: "/demo-gallery/library.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: School Activity", category: "activities", imageUrl: "/demo-gallery/activities.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: Sports Day", category: "sports", imageUrl: "/demo-gallery/sports.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: Cultural Program", category: "cultural", imageUrl: "/demo-gallery/cultural.webp", caption: "Illustrative sample image - replace with an actual school photo." },
-    { title: "SAMPLE: School Event", category: "events", imageUrl: "/demo-gallery/event.webp", caption: "Illustrative sample image - replace with an actual school photo." },
+    { title: "School building", category: "campus", imageUrl: "/school-gallery/campus-building.webp", caption: "The academic building at Neora, Patna.", featured: true },
+    { title: "Science laboratory", category: "academics", imageUrl: "/school-gallery/science-lab.webp", caption: "Laboratory workbenches and storage cabinets." },
+    { title: "Physics practical", category: "academics", imageUrl: "/school-gallery/physics-lab.webp", caption: "Senior students working with apparatus." },
+    { title: "Primary classroom", category: "academics", imageUrl: "/school-gallery/classroom-primary.webp", caption: "Young students at their desks." },
+    { title: "Nursery class", category: "academics", imageUrl: "/school-gallery/nursery-class.webp", caption: "Nursery students with their teachers." },
+    { title: "Senior classroom", category: "academics", imageUrl: "/school-gallery/senior-classroom.webp", caption: "Senior students in class." },
+    { title: "Independence Day assembly", category: "events", imageUrl: "/school-gallery/flag-assembly.webp", caption: "Students in house colours with flags." },
+    { title: "Flag hoisting", category: "events", imageUrl: "/school-gallery/flag-hoisting.webp", caption: "Flag hoisting with a tricolour rangoli." },
+    { title: "Annual function", category: "events", imageUrl: "/school-gallery/annual-function.webp", caption: "Parents, guests and students at the annual function." },
+    { title: "Award ceremony", category: "events", imageUrl: "/school-gallery/award-ceremony.webp", caption: "Receiving an award on stage." },
+    { title: "Prize distribution", category: "sports", imageUrl: "/school-gallery/prize-distribution.webp", caption: "Trophies for sports day winners." },
+    { title: "Sports day line-up", category: "sports", imageUrl: "/school-gallery/sports-lineup.webp", caption: "Teams lined up by house colour." },
+    { title: "Physical training drill", category: "sports", imageUrl: "/school-gallery/pt-drill.webp", caption: "Students in rows for a PT drill." },
+    { title: "Farewell programme", category: "cultural", imageUrl: "/school-gallery/farewell-stage.webp", caption: "Students on a decorated stage." },
+    { title: "Christmas crafts", category: "cultural", imageUrl: "/school-gallery/christmas-board.webp", caption: "A classroom board decorated for Christmas." },
+    { title: "Morning prayer", category: "activities", imageUrl: "/school-gallery/morning-prayer.webp", caption: "Students in rows for morning prayer." },
+    { title: "Middle school classroom", category: "academics", imageUrl: "/school-gallery/classroom-middle.webp", caption: "Middle school students in class." },
+    { title: "Senior secondary classroom", category: "academics", imageUrl: "/school-gallery/classroom-board.webp", caption: "Senior students in class." },
+    { title: "Examination time", category: "academics", imageUrl: "/school-gallery/exam-hall.webp", caption: "Students writing an examination." },
+    { title: "Teachers and staff", category: "campus", imageUrl: "/school-gallery/staff-group.webp", caption: "Teachers and staff outside the school building." },
+    { title: "Sports day", category: "sports", imageUrl: "/school-gallery/students-mat.webp", caption: "Students on a green mat during sports day." },
+    { title: "On the field", category: "sports", imageUrl: "/school-gallery/sports-field.webp", caption: "Teachers and students on the sports field." },
+    { title: "Students with certificates", category: "activities", imageUrl: "/school-gallery/certificates.webp", caption: "Certificates for participating students." },
+    { title: "Medal ceremony", category: "activities", imageUrl: "/school-gallery/medal-girl.webp", caption: "A young student receives a medal." },
   ].map((photo, order) => ({ ...photo, order, isActive: true }));
 
   if ((await Gallery.countDocuments()) === 0) {
     await Gallery.insertMany(sampleGallery);
-    console.log(`Created ${sampleGallery.length} sample gallery records.`);
+    console.log(`Created ${sampleGallery.length} gallery records.`);
   }
 
   if ((await Notice.countDocuments()) === 0) {
