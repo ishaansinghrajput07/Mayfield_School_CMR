@@ -97,8 +97,6 @@ const signup = asyncHandler(async (req, res, next) => {
     confirmPassword,
     mobile,
     parentMobile,
-    mobileVerifyToken,
-    parentMobileVerifyToken,
     dob,
     gender,
     address,
@@ -130,31 +128,6 @@ const signup = asyncHandler(async (req, res, next) => {
     res.status(400);
     throw new Error("Password must be at least 6 characters");
   }
-
-  // Both mobile numbers must carry a valid, freshly-issued OTP verification
-  // token (see /api/otp/verify) - proves the applicant actually controls
-  // these numbers before we create student + digital ID.
-  //
-  // Verification itself is OPTIONAL, not required, to submit: if a token
-  // wasn't provided at all, we just skip the check rather than blocking
-  // signup on it. But if one WAS provided, it must actually be valid -
-  // there's no point half-trusting a token that's expired or forged.
-  const checkVerified = (token, expectedMobile, expectedPurpose, label) => {
-    if (!token) return;
-    let payload;
-    try {
-      payload = jwt.verify(token, process.env.JWT_SECRET);
-    } catch {
-      res.status(400);
-      throw new Error(`${label} verification has expired - verify again, or leave it unverified`);
-    }
-    if (payload.mobile !== expectedMobile || payload.purpose !== expectedPurpose) {
-      res.status(400);
-      throw new Error(`${label} verification does not match the number provided`);
-    }
-  };
-  checkVerified(mobileVerifyToken, mobile, "signup_student_mobile", "Mobile number");
-  checkVerified(parentMobileVerifyToken, parentMobile, "signup_parent_mobile", "Parent mobile number");
 
   const [existingEmail, existingAdmission, application] = await Promise.all([
     User.findOne({ email: email.toLowerCase() }),
@@ -194,7 +167,7 @@ const signup = asyncHandler(async (req, res, next) => {
     dob: dob || undefined,
     gender: gender || undefined,
     phone: mobile,
-    phoneVerified: Boolean(mobileVerifyToken),
+    phoneVerified: false,
     address,
     class: classId || undefined,
     section,
@@ -203,7 +176,7 @@ const signup = asyncHandler(async (req, res, next) => {
     academicYear,
     passingYear,
     subjects: Array.isArray(subjects) ? subjects : String(subjects || "").split(",").map((s) => s.trim()).filter(Boolean),
-    parent: { phone: parentMobile, phoneVerified: Boolean(parentMobileVerifyToken) },
+    parent: { phone: parentMobile, phoneVerified: false },
     idCard: {
       cardNumber,
       issuedDate: new Date(),

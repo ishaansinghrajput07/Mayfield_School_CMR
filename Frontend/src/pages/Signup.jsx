@@ -20,7 +20,6 @@ import {
 import { notifySuccess, notifyError } from "../utils/toast";
 import { useAuth } from "../context/AuthContext";
 import { publicApi } from "../api/endpoints";
-import MobileVerifyField from "../components/MobileVerifyField";
 import AuthHero from "../components/auth/AuthHero";
 import AuthInput from "../components/ui/AuthInput";
 import AuthSelect from "../components/ui/AuthSelect";
@@ -63,8 +62,6 @@ export default function Signup() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [classes, setClasses] = useState([]);
-  const [mobileVerifyToken, setMobileVerifyToken] = useState(null);
-  const [parentMobileVerifyToken, setParentMobileVerifyToken] = useState(null);
 
   useEffect(() => {
     publicApi
@@ -99,8 +96,6 @@ export default function Signup() {
         notifyError("Please fill in every field");
         return false;
       }
-      // OTP verification is optional here - if the person verified it, great,
-      // it gets attached below; if not, signup still proceeds.
     }
     if (step === 2) {
       if (!form.admissionNumber || !form.classId || !form.section) {
@@ -120,7 +115,7 @@ export default function Signup() {
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
-      const user = await signup({ ...form, mobileVerifyToken, parentMobileVerifyToken });
+      const user = await signup(form);
       setSuccess(true);
       notifySuccess(`Welcome, ${user.name.split(" ")[0]} — your account is ready`);
       setTimeout(() => navigate("/student"), 1400);
@@ -251,23 +246,23 @@ export default function Signup() {
                     {step === 1 && (
                       <div className="grid gap-4">
                         <div className="grid gap-4 sm:grid-cols-2">
-                          <MobileVerifyField
-                            label="Mobile number"
+                          <AuthInput
+                            id="mobile"
+                            label="Student mobile number"
+                            type="tel"
                             value={form.mobile}
-                            onChange={(v) => setForm((f) => ({ ...f, mobile: v }))}
-                            purpose="signup_student_mobile"
-                            verified={!!mobileVerifyToken}
-                            onVerified={setMobileVerifyToken}
-                            variant="light"
+                            onChange={set("mobile")}
+                            required
+                            hint="Enter a number the school can use to contact you."
                           />
-                          <MobileVerifyField
-                            label="Parent mobile number"
+                          <AuthInput
+                            id="parentMobile"
+                            label="Parent/guardian mobile number"
+                            type="tel"
                             value={form.parentMobile}
-                            onChange={(v) => setForm((f) => ({ ...f, parentMobile: v }))}
-                            purpose="signup_parent_mobile"
-                            verified={!!parentMobileVerifyToken}
-                            onVerified={setParentMobileVerifyToken}
-                            variant="light"
+                            onChange={set("parentMobile")}
+                            required
+                            hint="Enter a parent or guardian's contact number."
                           />
                         </div>
                         <div className="grid gap-4 sm:grid-cols-2">
